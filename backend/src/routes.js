@@ -10,6 +10,7 @@ routes.get('/campanhas', campanhaController.index)
 routes.post('/campanhas', campanhaController.create)
 
 routes.get('/profile', profileController.index)
+routes.post('/session', profileController.session)
 
 routes.get('/users', userController.index)
 routes.post('/users', userController.create)

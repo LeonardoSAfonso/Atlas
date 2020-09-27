@@ -3,13 +3,14 @@ const { table } = require("../connection");
 exports.up = function(knex) {
 
     return knex.schema.createTable('AtuacaoCampanhas', function(table){
-        table.integer('codUser').notNullable()
-        table.integer('codCampanha').notNullable()
+        table.integer('idUser').notNullable()
+        table.integer('idCampanha').notNullable()
+        table.string('funcao')
 
-        table.foreign('codUser').references('codUser').inTable('Users')
-        table.foreign('codCampanha').references('codCampanha').inTable('Campanhas')
+        table.foreign('idUser').references('codUser').inTable('Users')
+        table.foreign('idCampanha').references('codCampanha').inTable('Campanhas')
 
-        table.primary(['codUser', 'codCampanha'])
+        table.primary(['idUser', 'idCampanha'])
     })
   
 };
