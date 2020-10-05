@@ -7,32 +7,32 @@ export default StyleSheet.create({
         paddingHorizontal:24,
         backgroundColor: '#f0f0f5'
     },
-    personagemList:{
+    mobList:{
         marginTop:15
     },
 
-    personagem:{
+    mob:{
         flexDirection:'row',
         backgroundColor: '#f0f0f5',
-        marginBottom:15
+        marginBottom:25
     },
 
-    personagemNome:{
-        fontSize: 20,
+    mobNome:{
+        fontSize: 18,
         color:'#41414D',
         fontWeight:'bold',
         marginLeft:10,
-        marginTop:7
+        marginTop:5
     },
 
-    personagemAventura:{
-        marginTop:0,
-        fontSize: 18,
-        color:'#737380',
+    atributos:{
         marginLeft:10,
+        fontSize: 15,
+        color:'#737380',
+
     },
     
-    addPersonagem:{                
+    addMob:{                
         backgroundColor: '#47525E',
         alignItems:'center',
         justifyContent:'center',

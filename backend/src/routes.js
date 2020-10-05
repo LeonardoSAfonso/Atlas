@@ -13,7 +13,9 @@ routes.get('/profile', profileController.index)
 routes.post('/session', profileController.session)
 
 routes.get('/users', userController.index)
+routes.get('/user', userController.getByEmail)
 routes.post('/users', userController.create)
+
 
 
 module.exports = routes

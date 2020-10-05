@@ -8,7 +8,7 @@ import { TextInput } from 'react-native';
 import { useField } from '@unform/core';
 import styles from '../styles';
 
-function Input({ name, ...rest }) {
+function InputLines({ name, ...rest }) {
   const inputRef = useRef(null);
 
   const { fieldName, registerField, defaultValue, error } = useField(name);
@@ -42,6 +42,8 @@ function Input({ name, ...rest }) {
       keyboardAppearance="dark"
       defaultValue={defaultValue}
       placeholderTextColor="#666360"
+      multiline = {true}
+      numberOfLines = {10}
       style={styles.input}
       onChangeText={value => {
         if (inputRef.current) {
@@ -53,4 +55,4 @@ function Input({ name, ...rest }) {
   );
 };
 
-export default Input;
+export default InputLines;

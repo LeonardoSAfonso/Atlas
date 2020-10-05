@@ -4,17 +4,13 @@ module.exports = {
 
     async index(req, res){
 
-        const {page = 1} = req.query 
-         
-        const [count] = await connection('Campanhas').count()
+        const idUser = req.headers.authorization
 
         const campanhas = await connection('Campanhas')
             .join('AtuacaoCampanhas', 'AtuacaoCampanhas.idCampanha', '=', 'Campanhas.codCampanha')
-            .limit(5)
-            .offset((page-1)*5)
             .select('Campanhas.nome','Campanhas.descricao', 'Campanhas.codCampanha' , 'AtuacaoCampanhas.funcao')
+            .where('codUser', idUser)
 
-            res.header('X-Total-Count', count['count(*)'])
         return res.json(campanhas)
     },
 

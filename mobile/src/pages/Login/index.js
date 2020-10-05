@@ -10,26 +10,28 @@ import Input from './components/Input'
 import styles from './styles'   
 
 
-export default function logon(){
+export default function login(){
 
     const navigation = useNavigation()
     const formRef = useRef(null)
 
-    function handleSubmit(){
+    async function handleSubmit(data){
 
         navigation.navigate('Campanha')
-        
     }
 
+    function handleLogon(){
+
+        navigation.navigate('Logon')
+    }
 
     return (
         <View style={styles.container}>
 
-            <Text style={styles.title}>CADASTRO</Text>
+            <Text style={styles.title}>LOGIN</Text>
 
             <Form ref={formRef} onSubmit={handleSubmit} style={styles.form}>
     
-                <Input name="nome" placeholder="Digite seu nome"/>
                 <Input name="email" placeholder="Insira seu email"/>
                 <Input name="passwor" placeholder="Digite sua senha"/>
 
@@ -37,6 +39,12 @@ export default function logon(){
 
             <View style={styles.actions}>
                 <TouchableOpacity style={styles.action} onPress={() => formRef.current.submitForm()}>
+                    <Text style={styles.actionText}>Entrar</Text>
+                </TouchableOpacity>
+
+                <Text style={[styles.actionText, {color:'#47525E', marginLeft:'45%'}]}>OU</Text>
+
+                <TouchableOpacity style={styles.action} onPress={()=>(handleLogon())}>
                     <Text style={styles.actionText}>Cadastrar</Text>
                 </TouchableOpacity>
 

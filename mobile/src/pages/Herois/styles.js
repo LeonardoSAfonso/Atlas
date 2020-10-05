@@ -7,40 +7,40 @@ export default StyleSheet.create({
         paddingHorizontal:24,
         backgroundColor: '#f0f0f5'
     },
-
-    title:{
-        marginTop:20,
-        marginLeft:'33%',
-        color: '#47525E',
-        fontSize: 20,
-        fontWeight: 'bold',
+    personagemList:{
+        marginTop:15
     },
 
-    campanhaList:{
-        marginTop:20
-    },
-
-    campanha:{
+    personagem:{
         flexDirection:'row',
         backgroundColor: '#f0f0f5',
-        marginBottom:15
     },
 
-    campanhaNome:{
-        fontSize: 20,
+    tr:{
+        marginLeft:'15%',
+        height:0.5,
+        width: '70%',
+        backgroundColor: '#000',
+        opacity:0.6,
+        marginVertical:15
+    },
+
+    personagemNome:{
+        fontSize: 18,
         color:'#41414D',
         fontWeight:'bold',
         marginLeft:10,
- 
+        marginTop:5
     },
 
-    campanhaFuncao:{
-        fontSize: 18,
-        color:'#737380',
+    atributos:{
         marginLeft:10,
+        fontSize: 15,
+        color:'#737380',
+
     },
     
-    addCampanha:{                
+    addPersonagem:{                
         backgroundColor: '#47525E',
         alignItems:'center',
         justifyContent:'center',

@@ -5,11 +5,11 @@ export default StyleSheet.create({
     container: {
         flex:1.,
         paddingHorizontal:24,
-        paddingTop: 10
+        paddingTop: 10, 
     },
-    
+
     title:{
-        marginLeft:'32%',
+        marginLeft:'40%',
         color: '#47525E',
         fontSize: 18,
         fontWeight: 'bold',

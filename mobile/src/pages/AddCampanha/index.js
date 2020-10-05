@@ -7,10 +7,12 @@ import api from '../../services/api'
 
 import Input from './components/Input'
 
+import InputLines from './components/InputLines'
+
 import styles from './styles'   
 
 
-export default function logon(){
+export default function addCampanha(){
 
     const navigation = useNavigation()
     const formRef = useRef(null)
@@ -25,13 +27,12 @@ export default function logon(){
     return (
         <View style={styles.container}>
 
-            <Text style={styles.title}>CADASTRO</Text>
+            <Text style={styles.title}>ADICIONAR CAMPANHA</Text>
 
             <Form ref={formRef} onSubmit={handleSubmit} style={styles.form}>
     
                 <Input name="nome" placeholder="Digite seu nome"/>
-                <Input name="email" placeholder="Insira seu email"/>
-                <Input name="passwor" placeholder="Digite sua senha"/>
+                <InputLines name="email" placeholder="Insira uma pequena introdução a sua aventura"/>
 
             </Form>
 

@@ -1,43 +1,68 @@
-import React, {useState, useEffect} from 'react'
-import { View, FlatList,Image, Text, TouchableOpacity } from 'react-native'
-import {useNavigation} from '@react-navigation/native'
-import {Feather, FontAwesome5} from  '@expo/vector-icons'
+import React, { useState, useEffect } from 'react'
+import { Alert, View, FlatList, Image, Text, TouchableOpacity } from 'react-native'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import { Feather, FontAwesome5 } from '@expo/vector-icons'
 
 import api from '../../services/api'
 
 import styles from './styles'
 
 
-export default function campanha(){
-    
+export default function listCampanha() {
+
     const navigation = useNavigation()
+
     const [campanhas, setCampanhas] = useState([])
-    const [total, setTotal] = useState(0)
-    const [page, setPage] = useState(1)
-    const [loading, setLoading] = useState(false)
 
-    async function loadCampanhas(){
 
-        const res = await api.get('campanhas')
+    async function loadCampanhas() {
+
+        const res = await api.get('campanhas', {
+            headers: {
+                Authorization: 1,
+            }
+        })
 
         setCampanhas(res.data)
-        setTotal(res.headers['x-total-count'])
-        setPage(page+1)
-        setLoading(false)
+
     }
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         loadCampanhas()
     }, [])
 
-    
 
-    function navigateToDetail(campanha){
-        navigation.navigate('Detail', {campanha})
+
+    function navigateToAddCampanha() {
+        navigation.navigate('AddCampanha')
     }
 
-    return(
-        <View style={styles.container}> 
+    function navigateToDetalhes() {
+        navigation.navigate('CampanhaTab')
+    }
+
+    function Alertafernando() {
+
+        return(
+        Alert.alert('Excluir Aventura?', 'Deseja mesmo excluir a aventura?',
+            [{
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel'
+            },
+            {
+                text: 'OK',
+                onPress: () => console.log('OK Pressed')
+            }
+            ])
+        )
+    }
+
+
+    return (
+        <View style={styles.container}>
+
+            <Text style={styles.title}>CAMPANHAS</Text>
 
             {/*<FlatList
                 data={campanhas}
@@ -57,38 +82,40 @@ export default function campanha(){
                     </TouchableOpacity>
 
                 )}
-            /> */}
+            />*/ }
 
             <View style={styles.campanhaList}>
 
-                <TouchableOpacity style={styles.campanha} onPress={()=>{}} >
-                    <FontAwesome5 name='dice-d20' size={50} color={'#47525E'}/>
+                <TouchableOpacity style={styles.campanha} 
+                    onPress={() => (navigateToDetalhes())} 
+                    onLongPress={() => (Alertafernando())} delayLongPress={500}
+                >
+                    <FontAwesome5 name='dice-d20' size={50} color={'#47525E'} />
                     <View>
-                        <Text style={styles.campanhaNome}>Teste</Text>
+                        <Text style={styles.campanhaNome}>Teste 1</Text>
                         <Text style={styles.campanhaFuncao}>Mestre</Text>
                     </View>
                 </TouchableOpacity>
-                
-                
 
-                <TouchableOpacity style={styles.campanha} onPress={()=>{}} >
-                    <FontAwesome5 name='dice-d20' size={50} color={'#47525E'}/>
-                    <View>
-                        <Text style={styles.campanhaNome}>Teste</Text>
-                        <Text style={styles.campanhaFuncao}>Mestre</Text>
-                    </View>
-                </TouchableOpacity>
-            
-                <TouchableOpacity style={styles.campanha} onPress={()=>{}} >
-                    <FontAwesome5 name='dice-d20' size={50} color={'#47525E'}/>
+
+                <TouchableOpacity style={styles.campanha} onPress={() => (navigateToDetalhes())} >
+                    <FontAwesome5 name='dice-d20' size={50} color={'#47525E'} />
                     <View>
                         <Text style={styles.campanhaNome}>Teste</Text>
                         <Text style={styles.campanhaFuncao}>Mestre</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.campanha} onPress={()=>{}} >
-                    <FontAwesome5 name='dice-d20' size={50} color={'#47525E'}/>
+                <TouchableOpacity style={styles.campanha} onPress={() => (navigateToDetalhes())} >
+                    <FontAwesome5 name='dice-d20' size={50} color={'#47525E'} />
+                    <View>
+                        <Text style={styles.campanhaNome}>Teste</Text>
+                        <Text style={styles.campanhaFuncao}>Mestre</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.campanha} onPress={() => (navigateToDetalhes())} >
+                    <FontAwesome5 name='dice-d20' size={50} color={'#47525E'} />
                     <View>
                         <Text style={styles.campanhaNome}>Teste</Text>
                         <Text style={styles.campanhaFuncao}>Mestre</Text>
@@ -96,15 +123,16 @@ export default function campanha(){
                 </TouchableOpacity>
 
             </View>
-            
+
 
             <TouchableOpacity
-            style={styles.addCampanha}
+                style={styles.addCampanha}
+                onPress={() => (navigateToAddCampanha())}
             >
-            <Feather name='plus' size={50} color={'#fff'}/>
+                <Feather name='plus' size={50} color={'#fff'} />
             </TouchableOpacity>
 
-            
+
 
         </View>
 

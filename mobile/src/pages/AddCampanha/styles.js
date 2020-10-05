@@ -9,7 +9,7 @@ export default StyleSheet.create({
     },
     
     title:{
-        marginLeft:'32%',
+        marginLeft:'21%',
         color: '#47525E',
         fontSize: 18,
         fontWeight: 'bold',
@@ -32,13 +32,12 @@ export default StyleSheet.create({
     },
 
     actions:{
-        marginTop:0,
         justifyContent: 'center',
         alignContent: 'center'
     },
 
     action:{
-        marginTop:25,
+        marginTop:20,
         marginBottom:25,
         backgroundColor: '#47525E',
         borderRadius:8,
