@@ -5,8 +5,7 @@ exports.up = function(knex) {
         
         table.increments('codUser')
         table.string('nome').notNullable()
-        table.string('email').notNullable()
-
+        table.string('email').notNullable().unique()
     })
   
 };

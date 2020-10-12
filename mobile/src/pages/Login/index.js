@@ -17,10 +17,22 @@ export default function login(){
 
     async function handleSubmit(data){
 
-        navigation.navigate('Campanha')
+        console.log(data)
+        try{
+            const res = await api.post('session', data)
+
+            navigation.navigate('Campanha', {
+                headers:{
+                Authorization: res.data.codUser
+            }})
+            console.log(res)
+
+        }catch(erro){
+            Alert.alert('Falha no login, tente novamente.')
+        }
     }
 
-    function handleLogon(){
+    function navigateToLogon(){
 
         navigation.navigate('Logon')
     }
@@ -33,7 +45,7 @@ export default function login(){
             <Form ref={formRef} onSubmit={handleSubmit} style={styles.form}>
     
                 <Input name="email" placeholder="Insira seu email"/>
-                <Input name="passwor" placeholder="Digite sua senha"/>
+                <Input name="password" placeholder="Digite sua senha"/>
 
             </Form>
 
@@ -44,7 +56,7 @@ export default function login(){
 
                 <Text style={[styles.actionText, {color:'#47525E', marginLeft:'45%'}]}>OU</Text>
 
-                <TouchableOpacity style={styles.action} onPress={()=>(handleLogon())}>
+                <TouchableOpacity style={styles.action} onPress={navigateToLogon}>
                     <Text style={styles.actionText}>Cadastrar</Text>
                 </TouchableOpacity>
 

@@ -15,9 +15,19 @@ export default function logon(){
     const navigation = useNavigation()
     const formRef = useRef(null)
 
-    function handleSubmit(){
+    async function handleSubmit(data){
 
-        navigation.navigate('Campanha')
+
+        try{
+            console.log(data)
+            const res = await api.post('users', data)
+
+            navigation.navigate('Campanha', {headers:{Authorization:res.data}})
+            console.log(res.data)
+
+        }catch(erro){
+            Alert.alert('Falha no cadastro, tente novamente.')
+        }
         
     }
 
@@ -31,7 +41,7 @@ export default function logon(){
     
                 <Input name="nome" placeholder="Digite seu nome"/>
                 <Input name="email" placeholder="Insira seu email"/>
-                <Input name="passwor" placeholder="Digite sua senha"/>
+                <Input name="password" placeholder="Digite sua senha"/>
 
             </Form>
 

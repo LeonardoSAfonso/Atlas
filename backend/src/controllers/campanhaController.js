@@ -4,12 +4,11 @@ module.exports = {
 
     async index(req, res){
 
-        const idUser = req.headers.authorization
+        const codUser = req.headers.authorization
 
         const campanhas = await connection('Campanhas')
-            .join('AtuacaoCampanhas', 'AtuacaoCampanhas.idCampanha', '=', 'Campanhas.codCampanha')
-            .select('Campanhas.nome','Campanhas.descricao', 'Campanhas.codCampanha' , 'AtuacaoCampanhas.funcao')
-            .where('codUser', idUser)
+            .select('Campanhas.nome','Campanhas.descricao', 'Campanhas.codCampanha', 'Campanhas.codUser')
+            .where('codUser', codUser)
 
         return res.json(campanhas)
     },
@@ -20,9 +19,7 @@ module.exports = {
 
         const codMestre = req.headers.authorization
         const codUser= req.headers.authorization
-        const idUser = req.headers.authorization
 
-        const funcao = 'Mestre'
 
         const codCampanha= await connection('Campanhas').insert({
             nome,
@@ -31,15 +28,25 @@ module.exports = {
             codUser
         })
 
-        const idCampanha = codCampanha
-        
-        await connection('AtuacaoCampanhas').insert({
-            idCampanha,
-            idUser,
-            funcao
-        })
-
         return res.json({codCampanha})
-    } 
+    },
+
+    async delete(req, res){
+
+        const codCampanha = req.params.id
+        const codUser = req.headers.Authorization
+
+        const campanha = connection('Campanhas')
+            .where('codCampanha', codCampanha)
+            .select('codUser')
+            .first()
+            if (campanha.codUser != codUser) {
+                return res.status(401).json({ error: 'Operation not permited.' })
+            }
+    
+            await connection('Campanhas').where('codCampanha', codCampanha).delete()
+    
+            return res.status(204).send()
+    }
 }
 

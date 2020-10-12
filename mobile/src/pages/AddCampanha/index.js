@@ -15,11 +15,23 @@ import styles from './styles'
 export default function addCampanha(){
 
     const navigation = useNavigation()
+    const route = useRoute()
     const formRef = useRef(null)
 
-    function handleSubmit(){
 
-        navigation.navigate('Campanha')
+    const user = route.params.headers.Authorization
+
+    function handleSubmit(data){
+
+
+        try{
+            console.log(data, user)
+            const res = api.post('Campanhas', data, {headers:{Authorization:user}})
+
+            navigation.navigate('Campanha')
+        }catch(erro){
+            Alert.alert('Falha no login, tente novamente.')
+        }
         
     }
 
@@ -32,7 +44,7 @@ export default function addCampanha(){
             <Form ref={formRef} onSubmit={handleSubmit} style={styles.form}>
     
                 <Input name="nome" placeholder="Digite seu nome"/>
-                <InputLines name="email" placeholder="Insira uma pequena introdução a sua aventura"/>
+                <InputLines name="descricao" placeholder="Insira uma pequena introdução a sua aventura"/>
 
             </Form>
 

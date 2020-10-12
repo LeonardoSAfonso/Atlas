@@ -28,7 +28,24 @@ module.exports = {
             email
         })   
 
-        return res.json({codUser})
 
+        
+        /*const user = await connection('Users')
+            .where({email:req.body.email})
+            .first()
+        */
+        console.log(codUser)
+
+        return res.json(codUser)
+
+    },
+
+    async delete (req, res){
+
+        const codUser = req.params.id
+
+        await connection('Users').where('codUser', codUser).delete()
+    
+        return res.status(204).send()
     }
 }

@@ -15,6 +15,14 @@ export default StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
+    tr:{
+        marginLeft:'15%',
+        height:0.5,
+        width: '70%',
+        backgroundColor: '#000',
+        opacity:0.6,
+        marginVertical:15
+    },
 
     campanhaList:{
         marginTop:20

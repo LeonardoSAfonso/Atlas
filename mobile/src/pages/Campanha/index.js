@@ -11,15 +11,18 @@ import styles from './styles'
 export default function listCampanha() {
 
     const navigation = useNavigation()
+    const route = useRoute()
 
     const [campanhas, setCampanhas] = useState([])
+
+    const user = route.params.headers.Authorization
 
 
     async function loadCampanhas() {
 
         const res = await api.get('campanhas', {
-            headers: {
-                Authorization: 1,
+            headers:{
+                Authorization:user
             }
         })
 
@@ -34,14 +37,30 @@ export default function listCampanha() {
 
 
     function navigateToAddCampanha() {
-        navigation.navigate('AddCampanha')
+        navigation.navigate('AddCampanha', {
+            headers: {
+                Authorization: user
+            }})
     }
-
     function navigateToDetalhes() {
         navigation.navigate('CampanhaTab')
     }
 
-    function Alertafernando() {
+    async function handleDeleteIncident(id){
+        try{
+            await api.delete(`campanhas/${id}`,{
+                headers: {
+                    authorization: user
+                }
+            })
+
+            setCampanhas(campanhas.filter(campanha => campanha.codCampanha !== id))
+        }catch(erro){
+            alert('Erro ao tentar deletar, tente novamente.')
+        }
+    }
+
+    function Alertafernando(id) {
 
         return(
         Alert.alert('Excluir Aventura?', 'Deseja mesmo excluir a aventura?',
@@ -52,7 +71,7 @@ export default function listCampanha() {
             },
             {
                 text: 'OK',
-                onPress: () => console.log('OK Pressed')
+                onPress: () => (handleDeleteIncident(id))
             }
             ])
         )
@@ -64,7 +83,7 @@ export default function listCampanha() {
 
             <Text style={styles.title}>CAMPANHAS</Text>
 
-            {/*<FlatList
+            <FlatList
                 data={campanhas}
                 style={styles.campanhaList}
                 keyExtractor={campanha=> String(campanha.codCampanha)}
@@ -73,18 +92,22 @@ export default function listCampanha() {
                 onEndReachedThreshold={0.2}
                 renderItem={({item: campanha})=> (
 
-                   <TouchableOpacity style={styles.campanha} onPress={()=>{}} >
+                    
+                    <TouchableOpacity style={styles.campanha} 
+                    onPress={() => (navigateToDetalhes())} 
+                    onLongPress={() => (Alertafernando(campanha.codCampanha))} delayLongPress={500}
+                >
                     <FontAwesome5 name='dice-d20' size={50} color={'#47525E'}/>
                     <View>
-                        <Text style={styles.campanhaNome}>Teste</Text>
+                        <Text style={styles.campanhaNome}>{campanha.nome}</Text>
                         <Text style={styles.campanhaFuncao}>Mestre</Text>
                     </View>
                     </TouchableOpacity>
 
                 )}
-            />*/ }
+            />
 
-            <View style={styles.campanhaList}>
+            {/*<View style={styles.campanhaList}>
 
                 <TouchableOpacity style={styles.campanha} 
                     onPress={() => (navigateToDetalhes())} 
@@ -122,12 +145,12 @@ export default function listCampanha() {
                     </View>
                 </TouchableOpacity>
 
-            </View>
+            </View>*/}
 
 
             <TouchableOpacity
                 style={styles.addCampanha}
-                onPress={() => (navigateToAddCampanha())}
+                onPress={navigateToAddCampanha}
             >
                 <Feather name='plus' size={50} color={'#fff'} />
             </TouchableOpacity>
