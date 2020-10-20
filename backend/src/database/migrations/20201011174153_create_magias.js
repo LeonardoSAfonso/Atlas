@@ -5,13 +5,11 @@ exports.up = function(knex) {
         table.string('nome').notNullable()
         table.string('descricao').notNullable()
         table.specificType('classe', 'INT[]').notNullable()
+        table.specificType('classeDesc', 'STRING[]').notNullable()
         table.integer('nivel').notNullable()
         table.string('escola')
         table.string('tipoDano')
-
-        table.foreign('classe').references('codClasse').inTable('Classes')
-
-
+        
     })
 };
 

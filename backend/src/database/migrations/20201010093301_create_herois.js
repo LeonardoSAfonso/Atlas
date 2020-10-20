@@ -6,12 +6,12 @@ exports.up = function(knex) {
         table.increments('codheroi').notNullable()
         table.string('nome')
         table.integer('nivel').notNullable()
-        table.string('tendencia')
+        table.string('alinhamento')
         table.integer('int').notNullable()
         table.integer('des').notNullable()
         table.integer('sab').notNullable()
         table.integer('car').notNullable()
-        table.integer('for').notNullable()
+        table.integer('forc').notNullable()
         table.integer('con').notNullable()
         table.integer('manaMaxima').notNullable()
         table.integer('mana').notNullable()
@@ -19,9 +19,12 @@ exports.up = function(knex) {
         table.integer('hp').notNullable()
         table.integer('classe').notNullable()
         table.integer('raca').notNullable()
+        table.integer('user').notNullable()
+
 
         table.foreign('classe').references('codClasse').inTable('Classes')
         table.foreign('raca').references('codRaca').inTable('Racas')
+        table.foreign('user').references('codUser').inTable('Users')
 
 
     })
