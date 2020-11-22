@@ -14,8 +14,6 @@ exports.up = function(knex) {
         table.integer('forc').notNullable()
         table.integer('con').notNullable()
         table.integer('ca').notNullable()
-        table.integer('manaMaxima').notNullable()
-        table.integer('mana').notNullable()
         table.integer('hpMaxima').notNullable()
         table.integer('hp').notNullable()
     })
@@ -23,5 +21,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTable('Herois')
+    return knex.schema.dropTable('Mobs')
 };

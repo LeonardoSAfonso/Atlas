@@ -23,7 +23,7 @@ export default function listCampanha() {
         const res = await api.get('campanhas', {
             headers:{
                 Authorization:user
-            }
+            }   
         })
 
         setCampanhas(res.data)
@@ -42,8 +42,8 @@ export default function listCampanha() {
                 Authorization: user
             }})
     }
-    function navigateToDetalhes() {
-        navigation.navigate('CampanhaTab')
+    function navigateToDetalhes(codCampanha) {
+        navigation.navigate('Mobs', {campanha: codCampanha} )
     }
 
     async function handleDeleteIncident(id){
@@ -94,7 +94,7 @@ export default function listCampanha() {
 
                     
                     <TouchableOpacity style={styles.campanha} 
-                    onPress={() => (navigateToDetalhes())} 
+                    onPress={() => (navigateToDetalhes(campanha.codCampanha))} 
                     onLongPress={() => (Alertafernando(campanha.codCampanha))} delayLongPress={500}
                 >
                     <FontAwesome5 name='dice-d20' size={50} color={'#47525E'}/>

@@ -3,7 +3,6 @@ import {FontAwesome5} from  '@expo/vector-icons'
 import {Text, View} from 'react-native'
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 
 const AppStack = createStackNavigator();
 
@@ -21,17 +20,6 @@ function Icone(){
     )   
 }
 
-const AppTab = createMaterialTopTabNavigator()
-
-function CampanhaTab(){
-    return(
-        <AppTab.Navigator tabBarOptions={{style: {backgroundColor:'#f0f0f5', fontWeight:'bold'}}} >
-                <AppTab.Screen name='Herois' component={Herois}/>
-                <AppTab.Screen name='Mobs' component={Mobs}/>
-        </AppTab.Navigator>
-    )
-}
-
 import Login from './pages/Login'
 import Logon from './pages/Logon'
 import Campanha from './pages/Campanha'
@@ -39,6 +27,8 @@ import Campanha from './pages/Campanha'
 import Herois from './pages/Herois'
 import Mobs from './pages/Mobs'
 import AddCampanha from './pages/AddCampanha'
+import AddMob from './pages/AddMob'
+
 
 import ProfileHeroi from './pages/ProfileHeroi'
 import ProfileMob from './pages/ProfileMob'
@@ -54,10 +44,13 @@ export default function Routes(){
                 <AppStack.Screen name='Login' component={Login}/>
                 <AppStack.Screen name='Logon' component={Logon}/>
                 <AppStack.Screen name='Campanha' component={Campanha}/>
-                <AppStack.Screen name='CampanhaTab' component={CampanhaTab}/>
+                <AppStack.Screen name='Mobs' component={Mobs}/>
+                <AppStack.Screen name='Herois' component={Herois}/>
                 <AppStack.Screen name='ProfileHeroi' component={ProfileHeroi} options={{headerShown: false}}/>
                 <AppStack.Screen name='ProfileMob' component={ProfileMob} options={{headerShown: false}}/>
                 <AppStack.Screen name='AddCampanha' component={AddCampanha}/>
+                <AppStack.Screen name='AddMob' component={AddMob}/>
+
 
                 
             </AppStack.Navigator>

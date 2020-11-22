@@ -21,6 +21,8 @@ export default function addCampanha(){
 
     const user = route.params.headers.Authorization
 
+    console.log(user)
+    
     function handleSubmit(data){
 
 

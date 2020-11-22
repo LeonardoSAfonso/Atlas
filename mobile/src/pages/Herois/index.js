@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import { View, FlatList,Image, Text, TouchableOpacity } from 'react-native'
-import {useNavigation} from '@react-navigation/native'
+import { View, FlatList, Text, TouchableOpacity } from 'react-native'
+import {useNavigation, useRoute} from '@react-navigation/native'
 import {Feather, FontAwesome5} from  '@expo/vector-icons'
 
 import api from '../../services/api'
@@ -11,19 +11,17 @@ import styles from './styles'
 export default function personagem(){
     
     const navigation = useNavigation()
-    const [personagens, setPersonagens] = useState([])
-    const [total, setTotal] = useState(0)
-    const [page, setPage] = useState(1)
-    const [loading, setLoading] = useState(false)
+
+
+    const [herois, setHerois] = useState([])
+    
 
     async function loadPersonagens(){
 
         const res = await api.get('personagens')
 
-        setPersonagens(res.data)
-        setTotal(res.headers['x-total-count'])
-        setPage(page+1)
-        setLoading(false)
+        setHerois(res.data)
+
     }
     
     useEffect(()=>{
@@ -34,6 +32,10 @@ export default function personagem(){
 
     function navigateToProfile(){
         navigation.navigate('ProfileHeroi')
+    }
+
+    function navigateToMobs(){
+        navigation.navigate('Mobs')
     }
 
     return(
@@ -143,6 +145,13 @@ export default function personagem(){
             style={styles.addPersonagem}
             >
             <Feather name='plus' size={50} color={'#fff'}/>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+            style={styles.mobs}
+            onPress={navigateToMobs}
+            >
+            <FontAwesome5 name='dragon' size={36} color={'#fff'}/>
             </TouchableOpacity>
 
             

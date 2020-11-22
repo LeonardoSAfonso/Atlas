@@ -13,18 +13,16 @@ exports.up = function(knex) {
         table.integer('car').notNullable()
         table.integer('forc').notNullable()
         table.integer('con').notNullable()
-        table.integer('manaMaxima').notNullable()
-        table.integer('mana').notNullable()
         table.integer('hpMaxima').notNullable()
         table.integer('hp').notNullable()
         table.integer('classe').notNullable()
         table.integer('raca').notNullable()
-        table.integer('user').notNullable()
+        table.integer('campanha').notNullable()
 
 
         table.foreign('classe').references('codClasse').inTable('Classes')
         table.foreign('raca').references('codRaca').inTable('Racas')
-        table.foreign('user').references('codUser').inTable('Users')
+        table.foreign('campanha').references('codCampanha').inTable('Campanhas')
 
 
     })

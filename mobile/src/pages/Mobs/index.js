@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { View, FlatList,Image, Text, TouchableOpacity } from 'react-native'
-import {useNavigation} from '@react-navigation/native'
+import {useNavigation, useRoute} from '@react-navigation/native'
 import {Feather, FontAwesome5} from  '@expo/vector-icons'
 
 import api from '../../services/api'
@@ -11,35 +11,76 @@ import styles from './styles'
 export default function mob(){
     
     const navigation = useNavigation()
+    const route = useRoute()
+
+    const campanha = route.params.campanha
+
+    console.log(campanha)
+
+
     const [mobs, setMobs] = useState([])
-    const [total, setTotal] = useState(0)
-    const [page, setPage] = useState(1)
-    const [loading, setLoading] = useState(false)
+   
+    async function loadMobs() {
 
-    async function loadMobs(){
-
-        const res = await api.get('mobs')
+        const res = await api.get(`mobs/${campanha}`)
 
         setMobs(res.data)
-        setTotal(res.headers['x-total-count'])
-        setPage(page+1)
-        setLoading(false)
+
     }
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         loadMobs()
     }, [])
 
-    
 
-    function navigateToProfile(){
-        navigation.navigate('ProfileMob')
+
+    function navigateToAddMob() {
+        navigation.navigate('AddMob', {campanha:campanha})
     }
+
+    function navigateToProfile(mob){
+        navigation.navigate('ProfileMob', {mob})
+    }
+
+    function navigateToHerois(){
+        navigation.navigate('Herois')
+    }
+
+    async function handleDeleteIncident(id){
+        try{
+            await api.delete(`mobs/${id}`,{
+                headers: {
+                    authorization: user
+                }
+            })
+
+            setMobs(mobs.filter(mob => mob.codMob !== id))
+        }catch(erro){
+            alert('Erro ao tentar deletar, tente novamente.')
+        }
+    }
+
+    /*function Alertafernando(id) {
+
+        return(
+        Alert.alert('Excluir Aventura?', 'Deseja mesmo excluir a aventura?',
+            [{
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel'
+            },
+            {
+                text: 'OK',
+                onPress: () => (handleDeleteIncident(id))
+            }
+            ])
+        )
+    }*/
 
     return(
         <View style={styles.container}> 
 
-            {/*<FlatList
+            <FlatList 
                 data={mobs}
                 style={styles.mobList}
                 keyExtractor={mob=> String(mob.codMob)}
@@ -48,19 +89,32 @@ export default function mob(){
                 onEndReachedThreshold={0.2}
                 renderItem={({item: mob})=> (
 
-                    <View style={styles.mob}>
-
-                        <FontAwesome5 name='user-circle' size={50} color={'#47525E'}/>
-
+                    
+                    <TouchableOpacity style={styles.mob} 
+                    onPress={() => (navigateToProfile(mob))} 
+                    onLongPress={() => (Alertafernando(mob.codMob))} delayLongPress={500}
+                >
+                    <FontAwesome5 name='user-circle' size={60} color={'#47525E'} style={{marginTop:5, marginRight:10}}/>
+                    <View>
                         <Text style={styles.mobNome}>{mob.nome}</Text>
-                        <Text style={styles.mobAventura}>{mob.funcao}</Text>
-
+                        <View style={{flexDirection:'row'}}>
+                            <View style={{width:'40%'}}>
+                                <Text style={styles.atributos}>NIVEL: {mob.nivel}</Text>
+                                <Text style={styles.atributos}>CA: {mob.ca}</Text>
+                            </View>
+                            <View >
+                                <Text style={styles.atributos}>HP: {mob.hpMaxima}/{mob.hp} </Text>
+                            </View>
+                        </View>
+                        <View style={styles.linha}></View>
                     </View>
-
+                    </TouchableOpacity>
                 )}
-            /> */}
+            />
 
-            <View style={styles.mobList}>
+            
+
+            {/*<View style={styles.mobList}>
 
                 <TouchableOpacity style={styles.mob} onPress={navigateToProfile} >
                     <FontAwesome5 name='user-circle' size={60} color={'#47525E'} style={{marginTop:5}}/>
@@ -131,13 +185,20 @@ export default function mob(){
                         </View>
                     </View>
                 </TouchableOpacity>
-            </View>
+            </View>*/}
             
-
             <TouchableOpacity
             style={styles.addMob}
+            onPress={navigateToAddMob}
             >
             <Feather name='plus' size={50} color={'#fff'}/>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+            style={styles.herois}
+            onPress={navigateToHerois}
+            >
+            <FontAwesome5 name='shield-alt' size={40} color={'#fff'}/>
             </TouchableOpacity>
 
             

@@ -25,7 +25,6 @@ export default function login(){
                 headers:{
                 Authorization: res.data.codUser
             }})
-            console.log(res)
 
         }catch(erro){
             Alert.alert('Falha no login, tente novamente.')

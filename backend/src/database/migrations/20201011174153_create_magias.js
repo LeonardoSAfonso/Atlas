@@ -4,8 +4,6 @@ exports.up = function(knex) {
         table.increments('codMagia').notNullable()
         table.string('nome').notNullable()
         table.string('descricao').notNullable()
-        table.specificType('classe', 'INT[]').notNullable()
-        table.specificType('classeDesc', 'STRING[]').notNullable()
         table.integer('nivel').notNullable()
         table.string('escola')
         table.string('tipoDano')

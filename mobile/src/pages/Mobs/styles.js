@@ -21,15 +21,22 @@ export default StyleSheet.create({
         fontSize: 18,
         color:'#41414D',
         fontWeight:'bold',
-        marginLeft:10,
         marginTop:5
     },
 
     atributos:{
-        marginLeft:10,
         fontSize: 15,
-        color:'#737380',
+        color:'#737380'
 
+    },
+    
+    linha:{
+        marginLeft:0,
+        height:0.5,
+        width: '85%',
+        backgroundColor: '#000',
+        opacity:0.2,
+        marginVertical:15
     },
     
     addMob:{                
@@ -43,5 +50,17 @@ export default StyleSheet.create({
         left:'90%',
         top:'82%'
     },
+
+    herois:{                
+        backgroundColor: '#47525E',
+        alignItems:'center',
+        justifyContent:'center',
+        width:60,
+        height:60,
+        borderRadius:50,
+        position:'absolute',
+        left:'10%',
+        top:'82%'
+    }
 
 })

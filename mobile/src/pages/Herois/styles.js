@@ -52,4 +52,17 @@ export default StyleSheet.create({
         top:'82%'
     },
 
+    mobs:{                
+        backgroundColor: '#47525E',
+        alignItems:'center',
+        justifyContent:'center',
+        width:60,
+        height:60,
+        borderRadius:50,
+        position:'absolute',
+        left:'10%',
+        top:'82%'
+    }
+
+
 })

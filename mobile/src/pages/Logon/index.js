@@ -19,7 +19,6 @@ export default function logon(){
 
 
         try{
-            console.log(data)
             const res = await api.post('users', data)
 
             navigation.navigate('Campanha', {headers:{Authorization:res.data}})
