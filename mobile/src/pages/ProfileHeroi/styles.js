@@ -62,6 +62,13 @@ export default StyleSheet.create({
 
     },
 
+    raca:{
+        fontSize: 18,
+        color:'#737380',
+        marginLeft:10
+
+    },
+
     atributos:{
         marginBottom:5,
         fontSize: 17,

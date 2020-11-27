@@ -7,11 +7,11 @@ export default StyleSheet.create({
         paddingHorizontal:24,
         backgroundColor: '#f0f0f5'
     },
-    personagemList:{
+    heroiList:{
         marginTop:15
     },
 
-    personagem:{
+    heroi:{
         flexDirection:'row',
         backgroundColor: '#f0f0f5',
     },
@@ -25,7 +25,7 @@ export default StyleSheet.create({
         marginVertical:15
     },
 
-    personagemNome:{
+    heroiNome:{
         fontSize: 18,
         color:'#41414D',
         fontWeight:'bold',
@@ -40,7 +40,7 @@ export default StyleSheet.create({
 
     },
     
-    addPersonagem:{                
+    addHeroi:{                
         backgroundColor: '#47525E',
         alignItems:'center',
         justifyContent:'center',

@@ -4,30 +4,34 @@ module.exports = {
 
     async create(req, res){
 
-        const user = req.headers.authorization
-        const classe = req.params.classe
-        const raca = req.params.raca
+        const campanha = req.params.campanha
+        const idClasse = req.params.classe
+        const idRaca = req.params.raca
 
         const {nome, nivel, alinhamento, int, des, sab, car,
-                forc, con, manaMaxima, mana, hpMaximo, hp} = req.body
+                forc, con, hpMaxima, hp} = req.body
+
+        const classe = await connection('Classes').select('nome').where('codClasse', idClasse).first()
+        const raca = await connection('Racas').select('nome').where('codraca', idRaca).first()
+
 
         const [codHeroi] = await connection('Herois').insert({
             nome,
-            nivel, 
+                nivel, 
             alinhamento, 
             int, 
             des, 
             sab, 
             car,
             forc, 
-            con, 
-            manaMaxima, 
-            mana, 
-            hpMaximo, 
-            hp, 
-            classe, 
+            con,
+            hpMaxima, 
+            hp,
+            classe,
+            idClasse,
             raca,
-            user
+            idRaca,
+            campanha
         })
 
         return res.json(codHeroi)
@@ -35,11 +39,11 @@ module.exports = {
 
     async index(req, res){
         
-        const user = req.headers.authorization
+        const campanha = req.params.campanha
 
         const herois = await connection('Herois')
         .select('*')
-        .where({user: user})
+        .where({campanha: campanha})
 
         return res.json(herois)
     },
@@ -47,17 +51,8 @@ module.exports = {
     async delete(req, res){
 
         const codHeroi = req.params.id
-        const user = req.headers.Authorization
 
-        const heroi = connection('Herois')
-            .where('codHeroi', codHeroi)
-            .select('user')
-            .first()
-            if (heroi.user != user) {
-                return res.status(401).json({ error: 'Operation not permited.' })
-            }
-    
-            await connection('Herois').where('codHeroi', codHeroi).delete()
+        await connection('Herois').where('codHeroi', codHeroi).delete()
     
             return res.status(204).send()
     }

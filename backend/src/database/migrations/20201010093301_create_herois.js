@@ -15,8 +15,10 @@ exports.up = function(knex) {
         table.integer('con').notNullable()
         table.integer('hpMaxima').notNullable()
         table.integer('hp').notNullable()
-        table.integer('classe').notNullable()
-        table.integer('raca').notNullable()
+        table.string('classe').notNullable(),
+        table.integer('idClasse').notNullable()
+        table.string('raca').notNullable(),
+        table.integer('idRaca').notNullable()
         table.integer('campanha').notNullable()
 
 

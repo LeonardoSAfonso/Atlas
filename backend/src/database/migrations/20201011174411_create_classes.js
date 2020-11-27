@@ -5,14 +5,17 @@ exports.up = function(knex) {
         table.string('nome').notNullable()
         table.integer('hpInicial').notNullable()
         table.integer('hpLevelUp').notNullable()
+        table.string('desc')
         table.string('proeficienciaArmaduras')
         table.string('proeficienciaArmas')
         table.string('proeficienciaTestes')
         table.string('habilidadePrincipal')
+        table.string('caminhoNome')
+        table.string('caminhoDesc')
     })
   
 };
 
 exports.down = function(knex) {
-  
+    return knex.schema.dropTable('Classes')
 };

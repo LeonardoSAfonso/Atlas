@@ -6,7 +6,6 @@ exports.up = function(knex) {
         table.string('descricao').notNullable()
         table.integer('nivel').notNullable()
         table.string('escola')
-        table.string('tipoDano')
         
     })
 };

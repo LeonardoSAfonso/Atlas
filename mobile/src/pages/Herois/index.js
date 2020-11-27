@@ -8,141 +8,108 @@ import api from '../../services/api'
 import styles from './styles'
 
 
-export default function personagem(){
+export default function heroi(){
     
     const navigation = useNavigation()
+    const route = useRoute()
+
+    const campanha = route.params.campanha
+
+    console.log('Heroi: ',campanha)
 
 
     const [herois, setHerois] = useState([])
     
 
-    async function loadPersonagens(){
+    async function loadHerois(){
 
-        const res = await api.get('personagens')
+        const res = await api.get(`herois/${campanha}`)
 
         setHerois(res.data)
 
     }
     
     useEffect(()=>{
-        loadPersonagens()
+        loadHerois()
     }, [])
 
     
 
-    function navigateToProfile(){
-        navigation.navigate('ProfileHeroi')
+    function navigateToProfile(heroi){
+        navigation.navigate('ProfileHeroi', {heroi})
     }
 
     function navigateToMobs(){
         navigation.navigate('Mobs')
     }
 
+    function navigateToAddHeroi(){
+        navigation.navigate('Mobs')
+    }
+
     return(
         <View style={styles.container}> 
 
-            {/*<FlatList
-                data={personagens}
-                style={styles.personagemList}
-                keyExtractor={personagem=> String(personagem.codPersonagem)}
+            <FlatList 
+                data={herois}
+                style={styles.heroiList}
+                keyExtractor={heroi=> String(heroi.codheroi)}
                 showsVerticalScrollIndicator={false}
-                onEndReached={loadPersonagens}
+                onEndReached={loadHerois}
                 onEndReachedThreshold={0.2}
-                renderItem={({item: personagem})=> (
+                renderItem={({item: heroi})=> (
 
-                    <View style={styles.personagem}>
+                    
+                    <TouchableOpacity style={styles.heroi} 
+                    onPress={() => (navigateToProfile(heroi))} 
+                    onLongPress={() => (Alertafernando(heroi.codheroi))} delayLongPress={500}
+                >
 
-                        <FontAwesome5 name='user-circle' size={50} color={'#47525E'}/>
+                        <FontAwesome5 name='user-circle' size={60} color={'#47525E'} style={{marginTop:5}}/>
 
-                        <Text style={styles.personagemNome}>{personagem.nome}</Text>
-                        <Text style={styles.personagemAventura}>{personagem.funcao}</Text>
+                        <View>
+                            <Text style={styles.heroiNome}>{heroi.nome}</Text>
+                            
+                            <View style={{flexDirection:'row'}}>
+                                <Text style={styles.atributos}>HP: {heroi.hpMaxima}/{heroi.hp}</Text>
+                                <Text style={styles.atributos}>NIVEL: {heroi.nivel}</Text>
+                            </View>
 
-                    </View>
+                            <View style={{flexDirection:'row'}}>
+                                <Text style={styles.atributos}>CLASSE: {heroi.classe}</Text>
+                                <Text style={styles.atributos}>CA: {heroi.ca}</Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
 
                 )}
-            /> */}
+            />
 
-            <View style={styles.personagemList}>
+            {/*<View style={styles.heroiList}>
 
-                <TouchableOpacity style={styles.personagem} onPress={()=>{}} >
-                    <FontAwesome5 name='user-circle' size={60} color={'#47525E'} style={{marginTop:5}}/>
+                <TouchableOpacity style={styles.heroi} onPress={()=>{}} >
+                    <FontAwesome5 name='user-circle' size={60} color={'#47525E'} style={{marginTop:10}}/>
+
                     <View>
-                        <Text style={styles.personagemNome}>Draco</Text>
+                        <Text style={styles.heroiNome}>Roberto</Text>
+                        
                         <View style={{flexDirection:'row'}}>
-                            <View style={{width:'50%'}}>
-                                <Text style={styles.atributos}>HP: 5000/5000</Text>
-                                <Text style={styles.atributos}>MP: 2000/2000</Text>
-                            </View>
-                            <View >
-                                <Text style={styles.atributos}>NIVEL: 100</Text>
-                                <Text style={styles.atributos}>CA: 20</Text>
-                            </View>
+                            <Text style={styles.atributos}>HP: 500/500</Text>
+                            <Text style={styles.atributos}>NIVEL: 10</Text>
+                        </View>
+
+                        <View style={{flexDirection:'row'}}>
+                            <Text style={styles.atributos}>CLASSE: GUERREIRO</Text>
+                            <Text style={styles.atributos}>CA: 15</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
-                
-                <View style={styles.tr}></View>
-
-                <TouchableOpacity style={styles.personagem} onPress={()=>(navigateToProfile())} >
-                 <FontAwesome5 name='user-circle' size={60} color={'#47525E'} style={{marginTop:5}}/>
-                    <View>
-                        <Text style={styles.personagemNome}>Karlos</Text>
-                        <View style={{flexDirection:'row'}}>
-                            <View style={{width:'50%'}}>
-                                <Text style={styles.atributos}>HP: 500/500</Text>
-                                <Text style={styles.atributos}>MP: 200/200</Text>
-                            </View>
-                            <View >
-                                <Text style={styles.atributos}>NIVEL: 10</Text>
-                                <Text style={styles.atributos}>CA: 15</Text>
-                            </View>
-                        </View>
-                    </View>
-                </TouchableOpacity>
-
-                <View style={styles.tr}></View>
-            
-                <TouchableOpacity style={styles.personagem} onPress={()=>{}} >
-                    <FontAwesome5 name='user-circle' size={60} color={'#47525E'} style={{marginTop:5}}/>
-                    <View>
-                        <Text style={styles.personagemNome}>Jerson</Text>
-                        <View style={{flexDirection:'row'}}>
-                            <View style={{width:'50%'}}>
-                                <Text style={styles.atributos}>HP: 500/500</Text>
-                                <Text style={styles.atributos}>MP: 200/200</Text>
-                            </View>
-                            <View >
-                                <Text style={styles.atributos}>NIVEL: 10</Text>
-                                <Text style={styles.atributos}>CA: 15</Text>
-                            </View>
-                        </View>
-                    </View>
-                </TouchableOpacity>
-
-                <View style={styles.tr}></View>
-
-                <TouchableOpacity style={styles.personagem} onPress={()=>{}} >
-                    <FontAwesome5 name='user-circle' size={60} color={'#47525E'} style={{marginTop:5}}/>
-
-                    <View>
-                        <Text style={styles.personagemNome}>Roberto</Text>
-                        <View style={{flexDirection:'row'}}>
-                            <View style={{width:'50%'}}>
-                                <Text style={styles.atributos}>HP: 500/500</Text>
-                                <Text style={styles.atributos}>MP: 200/200</Text>
-                            </View>
-                            <View >
-                                <Text style={styles.atributos}>NIVEL: 10</Text>
-                                <Text style={styles.atributos}>CA: 15</Text>
-                            </View>
-                        </View>
-                    </View>
-                </TouchableOpacity>
-            </View>
+            </View>*/}
             
 
             <TouchableOpacity
-            style={styles.addPersonagem}
+            style={styles.addHeroi}
+            onPress={navigateToAddHeroi}
             >
             <Feather name='plus' size={50} color={'#fff'}/>
             </TouchableOpacity>

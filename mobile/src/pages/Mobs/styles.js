@@ -8,20 +8,18 @@ export default StyleSheet.create({
         backgroundColor: '#f0f0f5'
     },
     mobList:{
-        marginTop:15
+        marginTop:10
     },
 
     mob:{
         flexDirection:'row',
-        backgroundColor: '#f0f0f5',
-        marginBottom:25
+        backgroundColor: '#f0f0f5'
     },
 
     mobNome:{
         fontSize: 18,
         color:'#41414D',
-        fontWeight:'bold',
-        marginTop:5
+        fontWeight:'bold'
     },
 
     atributos:{
@@ -31,7 +29,6 @@ export default StyleSheet.create({
     },
     
     linha:{
-        marginLeft:0,
         height:0.5,
         width: '85%',
         backgroundColor: '#000',

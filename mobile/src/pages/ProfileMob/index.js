@@ -34,9 +34,7 @@ export default function profile(){
     function navigateBack(){
         navigation.goBack()
     }
-
-    console.log("mob: ", mob.nome)
-    console.log("Mob: ", Mob.nome)
+    
     return(
         <View style={styles.container}> 
                 

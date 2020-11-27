@@ -1,12 +1,12 @@
 
 exports.up = function(knex) {
-    return knex.schema.createTable('habilidadesMob', function(table){
+    return knex.schema.createTable('HabilidadesMob', function(table){
         table.integer('idMob').notNullable()
-        table.increments('idHabilidade').notNullable()
+        table.increments('codHabilidade').notNullable()
+        table.string('nomeHab')
+        table.string('descHab')
 
         table.foreign('idMob').references('codMob').inTable('Mobs')
-
-
         
     })
 };

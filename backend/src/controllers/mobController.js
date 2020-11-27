@@ -39,17 +39,9 @@ module.exports = {
     async delete(req, res){
 
         const codMonster = req.params.id
-        const campanha = req.params.campanha
-
-        const mob = await connection('MobsCampanha')
-            .where('codMonster', codMonster)
-            .select('idCampanha')
-            .first()
-            if (mob.campanha != campanha) {
-                return res.status(401).json({ error: 'Operation not permited.' })
-            }
-    
-            await connection('Mobs').where('codMonster', codMonster).delete()
+        
+        console.log(req.params)
+        await connection('MobsCampanha').where('codMonster', codMonster).delete()
     
             return res.status(204).send()
     },
