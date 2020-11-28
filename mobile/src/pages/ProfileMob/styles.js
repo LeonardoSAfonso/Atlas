@@ -8,32 +8,26 @@ export default StyleSheet.create({
         paddingTop: Constants.statusBarHeight
     },
     imagem:{
-        height:'35%',
+        height:'8.5%',
         width:'100%',
-        backgroundColor:'orange'
+        backgroundColor:'orange',
+        elevation:10,
+        marginBottom:1
         
     },
-    detalhes:{
-        padding:20
-        
-    },
-
     tr:{
         marginLeft:'15%',
         height:0.5,
         width: '70%',
         backgroundColor: '#000',
         opacity:0.6,
-        marginVertical:15
+        marginVertical:10
     },
     title:{
         color: '#47525E',
         fontSize: 24,
         fontWeight: 'bold',
         alignSelf:'center'
-    },
-    mobList:{
-        marginTop:15
     },
 
     mob:{
@@ -46,25 +40,31 @@ export default StyleSheet.create({
         fontSize: 22,
         color:'#41414D',
         fontWeight:'bold',
-        marginTop:5
+        marginTop:-5
     },
 
     mobNivel:{
         fontSize: 18,
         color:'#41414D',
         fontWeight:'bold',
-        marginTop:5
+        marginTop:-7
     },
     
-    caracteristicas:{
+    caracteristicasTitle:{
         fontSize: 18,
         color:'#737380',
+        fontWeight:'bold'
+    },
+
+    caracteristicas:{
+        fontSize: 18,
+        color:'#737380'
 
     },
 
     atributos:{
-        marginBottom:5,
-        fontSize: 17,
+        marginTop:10,
+        fontSize: 18,
         color:'#737380',
 
     },

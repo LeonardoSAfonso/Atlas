@@ -40,10 +40,11 @@ routes.delete('/classes/:id', classeController.delete)
 
 routes.get('/magias', magiaController.index)
 routes.post('/magias', magiaController.create)
+routes.post('/magiasRel', magiaController.relacionar)
 routes.delete('/magias/:id', magiaController.delete)
 routes.get('/magias/:id/:nivel', magiaController.relacionados)
 
-routes.get('/habilidades', habilidadesController.index)
+routes.get('/habilidades/:id', habilidadesController.index)
 routes.post('/habilidades', habilidadesController.create)
 routes.delete('/habilidades/:id', habilidadesController.delete)
 

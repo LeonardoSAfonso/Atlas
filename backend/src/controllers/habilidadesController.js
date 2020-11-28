@@ -4,11 +4,11 @@ module.exports = {
 
     async create(req, res){
 
-        const {nome, desc, idMob} = req.body
+        const {nomeHab, descHab, idMob} = req.body
 
-        const [codHabilidade] = await connection('Herois').insert({
-            nome,
-            desc, 
+        const [codHabilidade] = await connection('HabilidadesMob').insert({
+            nomeHab,
+            descHab, 
             idMob
         })
 
@@ -17,9 +17,10 @@ module.exports = {
 
     async index(req, res){
 
-        
-        const habilidades = await connection('Mob').join('HabilidadesMob', 'codMob','=', 'idMob')
-            .select('codhabilidade', 'nomeHab', 'descHab')
+        const idMob = parseInt(req.params.id)
+
+        const habilidades = await connection('HabilidadesMob').join('Mobs', 'Mobs.codMob','=', 'idMob')
+            .select('codHabilidade', 'nomeHab', 'descHab', 'idMob').where('Mobs.codMob', idMob)
     
 
         return res.json(habilidades)

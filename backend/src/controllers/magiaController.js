@@ -6,14 +6,27 @@ module.exports = {
 
         const {nome, descricao, nivel, escola} = req.body
 
-        const [codMagia] = await connection('Herois').insert({
+        const [codMagia] = await connection('Magias').insert({
             nome,
             descricao, 
             nivel,
             escola
         })
 
-        return res.json(codRaca)
+        return res.json(codMagia)
+    },
+
+    async relacionar(req, res){
+
+        const {idMagia, idClasse, classeDesc} = req.body
+
+        const [codRelacao] = await connection('RelacaoMagias').insert({
+            idMagia,
+            idClasse,
+            classeDesc
+        })
+
+        return res.json(codRelacao)
     },
 
     async index(req, res){
@@ -26,10 +39,12 @@ module.exports = {
 
     async relacionados(req, res){
 
-        const idClasse = req.params.id
-        const nivel = req.params.nivel + 1
+        const idClasse = parseInt(req.params.id)
+        const nivel = parseInt(req.params.nivel) + 1
 
-        await connection('Magias').innerjoin('RelacaoMagias','codMagia', 'IdMagia')
+        console.log(nivel)
+
+        const magias = await connection('Magias').innerJoin('RelacaoMagias','codMagia', 'IdMagia')
         .where('idClasse', idClasse).andWhere('nivel', '<', nivel)
     
 
