@@ -43,8 +43,8 @@ export default function heroi(){
         navigation.navigate('Mobs')
     }
 
-    function navigateToAddHeroi(){
-        navigation.navigate('Mobs')
+    function navigateToRaca(){
+        navigation.navigate('Raca', campanha)
     }
 
     return(
@@ -109,7 +109,7 @@ export default function heroi(){
 
             <TouchableOpacity
             style={styles.addHeroi}
-            onPress={navigateToAddHeroi}
+            onPress={navigateToRaca}
             >
             <Feather name='plus' size={50} color={'#fff'}/>
             </TouchableOpacity>

@@ -4,18 +4,14 @@ module.exports = {
 
     async create(req, res){
 
-        const {nome, descricao, alinhamento, visao, tracos, 
-            subRaca, subRacaDesc, subRacaTracos} = req.body
+        const {nome, descricao, alinhamento, visao, tracos} = req.body
 
         const [codRaca] = await connection('Racas').insert({
             nome,
             descricao, 
             alinhamento,
             visao, 
-            tracos, 
-            subRaca, 
-            subRacaDesc,
-            subRacaTracos
+            tracos
         })
 
         return res.json(codRaca)

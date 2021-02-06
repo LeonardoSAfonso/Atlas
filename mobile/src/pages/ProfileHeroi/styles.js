@@ -8,7 +8,7 @@ export default StyleSheet.create({
         paddingTop: Constants.statusBarHeight
     },
     imagem:{
-        height:'35%',
+        height:'8.7%',
         width:'100%',
         backgroundColor:'orange'
         
@@ -19,12 +19,12 @@ export default StyleSheet.create({
     },
 
     tr:{
-        marginLeft:'15%',
+        alignSelf:'center',
         height:0.5,
-        width: '70%',
+        width: '80%',
         backgroundColor: '#000',
         opacity:0.6,
-        marginVertical:15
+        marginVertical:10
     },
     title:{
         color: '#47525E',
@@ -46,14 +46,20 @@ export default StyleSheet.create({
         fontSize: 22,
         color:'#41414D',
         fontWeight:'bold',
-        marginTop:5
+        marginTop:-10
     },
 
     heroiNivel:{
         fontSize: 18,
         color:'#41414D',
         fontWeight:'bold',
-        marginTop:5
+        marginTop:-7
+    },
+
+    caracteristicasTitle:{
+        fontSize: 18,
+        color:'#737380',
+        fontWeight:'bold'
     },
     
     caracteristicas:{
@@ -70,8 +76,8 @@ export default StyleSheet.create({
     },
 
     atributos:{
-        marginBottom:5,
-        fontSize: 17,
+        marginTop:10,
+        fontSize: 18,
         color:'#737380',
 
     },

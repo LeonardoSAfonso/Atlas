@@ -49,7 +49,7 @@ routes.post('/habilidades', habilidadesController.create)
 routes.delete('/habilidades/:id', habilidadesController.delete)
 
 routes.get('/herois/:campanha', heroiController.index)
-routes.post('/herois/:campanha/:raca/:classe', heroiController.create)
+routes.post('/herois/:campanha/:idRaca/:idClasse/:raca/:classe', heroiController.create)
 routes.delete('/herois/:id', heroiController.delete)
 
 

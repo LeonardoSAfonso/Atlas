@@ -4,20 +4,19 @@ module.exports = {
 
     async create(req, res){
 
+        console.log(req.params)
+
         const campanha = req.params.campanha
-        const idClasse = req.params.classe
-        const idRaca = req.params.raca
+        const classe = req.params.classe
+        const idClasse = req.params.idClasse
+        const raca = req.params.classe
+        const idRaca = req.params.idRaca
 
-        const {nome, nivel, alinhamento, int, des, sab, car,
-                forc, con, hpMaxima, hp} = req.body
-
-        const classe = await connection('Classes').select('nome').where('codClasse', idClasse).first()
-        const raca = await connection('Racas').select('nome').where('codraca', idRaca).first()
-
+        const {nome, nivel, alinhamento, int, des, sab, car, forc, con, hpMaxima, hp} = req.body
 
         const [codHeroi] = await connection('Herois').insert({
             nome,
-                nivel, 
+            nivel, 
             alinhamento, 
             int, 
             des, 

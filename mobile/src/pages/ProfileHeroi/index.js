@@ -43,66 +43,81 @@ export default function profile(){
                     <TouchableOpacity onPress={navigateBack}>
                         <Feather name='arrow-left' size={30} color='#47525E'/>
                     </TouchableOpacity>
-                    <Text style={styles.heroiNome}>{heroi.nome}</Text>
+
+                    <View style={{alignItems:'center'}}>
+                        <Text style={styles.heroiNome}>{heroi.nome}</Text>
+                        <Text style={styles.heroiNivel}>Nivel: {heroi.nivel}</Text>
+                    </View>  
+                    
                     <TouchableOpacity onPress={()=>{}}>
                         <Entypo name='dots-three-vertical' size={30} color='#47525E'/>
                     </TouchableOpacity>
+
                 </View>
-                <View style={{alignItems:'center'}}>
-                    <Text style={styles.heroiNivel}>Nivel: {heroi.nivel}</Text>
-                </View>
+                
             </View>   
+               
 
-            <View style={styles.detalhes}>                
+            <View style={{flexDirection:'row', justifyContent:'center', marginTop:10}}>
 
-                <View style={{flexDirection:'row', justifyContent:'space-evenly'}}>
-
-                    <Text style={styles.caracteristicas}>HP: {heroi.hpMaxima}/{heroi.hp}</Text>
-                    <Text style={styles.caracteristicas}>CA: {heroi.ca}</Text>
-
-                </View>
-
-                <View style={styles.tr}></View>
-
-                <View style={{flexDirection:'row', alignSelf:'center'}}>
-                    <Text style={styles.caracteristicas}>CLASSE: {heroi.classe}</Text>
-                    <Text style={styles.raca}>RAÇA: {heroi.raca}</Text>
-                </View>
-
-                <View style={{alignSelf:'center', marginTop:0}}>
-                    <Text style={styles.caracteristicas}>ALINHAMENTO: {heroi.alinhamento}</Text>
-
-                </View>
-
-                
-
-
-                <View style={styles.tr}></View>
-            
-                <View style={{justifyContent:'space-evenly'}}>
-
-                    <Text style={styles.title}>Atributos</Text>
-
-                    <View style={{justifyContent:'space-evenly', alignItems: 'center',paddingVertical: 10}}>
-
-                        <Text style={styles.atributos}>FORÇA: {heroi.forc}</Text>
-                        <Text style={styles.atributos}>CONSTITUIÇÃO: {heroi.con}</Text>
-                        <Text style={styles.atributos}>DESTREZA: {heroi.des}</Text>
-                        <Text style={styles.atributos}>INTELIGÊNCIA: {heroi.int}</Text>
-                        <Text style={styles.atributos}>SABEDORIA: {heroi.sab}</Text>
-                        <Text style={styles.atributos}>CARISMA: {heroi.car}</Text>
-                
-                    </View>
-
-                </View>
-                
-                
+                <Text style={styles.caracteristicasTitle}>HP: </Text>
+                <Text style={styles.caracteristicas}>{heroi.hpMaxima}/{heroi.hp}</Text> 
+                <Text style={[{marginLeft:20}, styles.caracteristicasTitle]}>CA: </Text>
+                <Text style={styles.caracteristicas}>{heroi.ca}</Text>
 
             </View>
 
-            
+                <View style={styles.tr}></View>
+                <View>
+                    <View style={{alignSelf:'center', flexDirection:'row'}}>  
+                        <View style={{alignSelf:'center', flexDirection:'row'}}>   
+                            <Text style={styles.caracteristicasTitle}>RAÇA: </Text>
+                            <Text style={styles.caracteristicas}>{heroi.raca}</Text>
+                        </View>
+                        <View style={{alignSelf:'center', flexDirection:'row'}}>    
+                                <Text style={[styles.caracteristicasTitle, {marginLeft:10}]}>CLASSE: </Text>
+                                <Text style={styles.caracteristicas}>{heroi.classe}</Text>
+                        </View>
+                    </View>
 
-            
+
+                    <View style={{alignSelf:'center', flexDirection:'row'}}>    
+                        <Text style={styles.caracteristicasTitle}>ALINHAMENTO: </Text>
+                        <Text style={styles.caracteristicas}>{heroi.alinhamento}</Text>
+                    </View>
+                </View>
+
+            <View style={styles.tr}></View>
+        
+            <View style={{justifyContent:'space-evenly', alignItems: 'center'}}>
+
+                <Text style={styles.title}>Atributos</Text>
+
+                <View style={{flexDirection:'row'}}>
+                    <Text style={[styles.caracteristicasTitle, {marginTop:10}]}>FORÇA: </Text>
+                    <Text style={styles.atributos}>{heroi.forc}</Text>
+
+                    <Text style={[styles.caracteristicasTitle, {marginTop:10, marginLeft: 10}]}>CONSTITUIÇÃO: </Text>
+                    <Text style={styles.atributos}>{heroi.con}</Text>
+                </View>
+
+                <View style={{flexDirection:'row'}}>
+                    <Text style={[styles.caracteristicasTitle, {marginTop:10}]}>DESTREZA: </Text>
+                    <Text style={styles.atributos}>{heroi.des}</Text>
+
+                    <Text style={[styles.caracteristicasTitle, {marginTop:10, marginLeft: 10}]}>CARISMA: </Text>
+                    <Text style={styles.atributos}>{heroi.car}</Text>
+                </View>
+
+                <View style={{flexDirection:'row'}}>
+                    <Text style={[styles.caracteristicasTitle, {marginTop:10}]}>SABEDORIA: </Text>
+                    <Text style={styles.atributos}>{heroi.sab}</Text>
+
+                    <Text style={[styles.caracteristicasTitle, {marginTop:10, marginLeft: 10}]}>INTELIGÊNCIA: </Text>
+                    <Text style={styles.atributos}>{heroi.int}</Text>
+                </View>
+
+            </View>        
 
         </View>
 

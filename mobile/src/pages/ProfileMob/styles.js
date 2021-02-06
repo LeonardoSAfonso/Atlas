@@ -8,17 +8,14 @@ export default StyleSheet.create({
         paddingTop: Constants.statusBarHeight
     },
     imagem:{
-        height:'8.5%',
+        height:'8.7%',
         width:'100%',
-        backgroundColor:'orange',
-        elevation:10,
-        marginBottom:1
-        
+        backgroundColor:'orange'
     },
     tr:{
-        marginLeft:'15%',
+        alignSelf:'center',
         height:0.5,
-        width: '70%',
+        width: '80%',
         backgroundColor: '#000',
         opacity:0.6,
         marginVertical:10
@@ -40,7 +37,7 @@ export default StyleSheet.create({
         fontSize: 22,
         color:'#41414D',
         fontWeight:'bold',
-        marginTop:-5
+        marginTop:-10
     },
 
     mobNivel:{

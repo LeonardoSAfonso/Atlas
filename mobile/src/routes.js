@@ -22,16 +22,21 @@ function Icone(){
 
 import Login from './pages/Login'
 import Logon from './pages/Logon'
+
 import Campanha from './pages/Campanha'
+import AddCampanha from './pages/AddCampanha'
+
+
+import Mobs from './pages/Mobs'
+import AddMob from './pages/AddMob'
+import ProfileMob from './pages/ProfileMob'
+
 
 import Herois from './pages/Herois'
-import Mobs from './pages/Mobs'
-import AddCampanha from './pages/AddCampanha'
-import AddMob from './pages/AddMob'
-
-
+import AddHeroi from './pages/AddHeroi'
+import Classe from './pages/Classe'
+import Raca from './pages/Raca'
 import ProfileHeroi from './pages/ProfileHeroi'
-import ProfileMob from './pages/ProfileMob'
 
 
 export default function Routes(){
@@ -50,6 +55,10 @@ export default function Routes(){
                 <AppStack.Screen name='ProfileMob' component={ProfileMob} options={{headerShown: false}}/>
                 <AppStack.Screen name='AddCampanha' component={AddCampanha}/>
                 <AppStack.Screen name='AddMob' component={AddMob}/>
+                <AppStack.Screen name='Raca' component={Raca}/>
+                <AppStack.Screen name='Classe' component={Classe}/>
+                <AppStack.Screen name='AddHeroi' component={AddHeroi}/>
+                
 
 
                 

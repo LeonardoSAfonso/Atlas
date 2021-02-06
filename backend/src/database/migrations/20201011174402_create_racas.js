@@ -7,9 +7,6 @@ exports.up = function(knex) {
         table.string('alinhamento').notNullable()
         table.string('visao').notNullable()
         table.string('tracos').notNullable()
-        table.string('subRaca').notNullable()
-        table.string('subRacaDesc').notNullable()
-        table.string('subRacaTracos').notNullable()
     })
   
 };
