@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { View, FlatList, Text, TouchableOpacity } from 'react-native'
-import {useNavigation, useRoute} from '@react-navigation/native'
+import {useNavigation, useRoute, useFocusEffect} from '@react-navigation/native'
 import {Feather, FontAwesome5} from  '@expo/vector-icons'
 
 import api from '../../services/api'
@@ -29,9 +29,11 @@ export default function heroi(){
 
     }
     
-    useEffect(()=>{
-        loadHerois()
+    useFocusEffect(
+        React.useCallback(()=>{
+            loadHerois()
     }, [])
+    )
 
     
 

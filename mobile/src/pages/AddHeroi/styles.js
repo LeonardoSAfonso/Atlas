@@ -66,6 +66,7 @@ export default StyleSheet.create({
     },
 
     input: {
+        alignSelf:'flex-end',
         marginBottom: 15,
         paddingHorizontal: 12,
         paddingVertical: 16,
@@ -76,6 +77,18 @@ export default StyleSheet.create({
         color: '#444',
         width:45,
         height:50
+    },
+    picker:{
+        
+        marginBottom:15,
+        borderRadius: 4,
+        borderWidth: 2,
+        borderColor: '#ddd',
+        fontSize: 15,
+        color: '#444',
+        width:150,
+        height:50
+
     },
     actions:{
         marginTop:0,
@@ -98,5 +111,6 @@ export default StyleSheet.create({
         color: '#47525E',
         fontSize: 20,
         fontWeight: 'bold',
+        marginRight: 1
     }
 })

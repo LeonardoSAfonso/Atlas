@@ -2,7 +2,7 @@ const connection = require('../database/connection')
 
 module.exports = {
 
-    async create(req, res){
+    async create(req, res) {
 
         console.log(req.params)
 
@@ -11,20 +11,22 @@ module.exports = {
         const idClasse = req.params.idClasse
         const raca = req.params.classe
         const idRaca = req.params.idRaca
+        const alinhamento = req.params.alinhamento
 
-        const {nome, nivel, alinhamento, int, des, sab, car, forc, con, hpMaxima, hp} = req.body
+        const { nome, nivel, int, des, sab, car, forc, con, hp } = req.body
+        const hpMaxima = hp
 
         const [codHeroi] = await connection('Herois').insert({
             nome,
-            nivel, 
-            alinhamento, 
-            int, 
-            des, 
-            sab, 
+            nivel,
+            alinhamento,
+            int,
+            des,
+            sab,
             car,
-            forc, 
+            forc,
             con,
-            hpMaxima, 
+            hpMaxima,
             hp,
             classe,
             idClasse,
@@ -36,23 +38,23 @@ module.exports = {
         return res.json(codHeroi)
     },
 
-    async index(req, res){
-        
+    async index(req, res) {
+
         const campanha = req.params.campanha
 
-        const herois = await connection('Herois')
-        .select('*')
-        .where({campanha: campanha})
+        const herois = await connection('Herois').join('Classes', 'Classes.codClasse', '=', 'idClasse')
+            .select('Classes.ca', 'Herois.*')
+            .where({ campanha: campanha })
 
         return res.json(herois)
     },
 
-    async delete(req, res){
+    async delete(req, res) {
 
         const codHeroi = req.params.id
 
         await connection('Herois').where('codHeroi', codHeroi).delete()
-    
-            return res.status(204).send()
+
+        return res.status(204).send()
     }
 }

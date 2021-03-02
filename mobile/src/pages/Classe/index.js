@@ -20,7 +20,8 @@ export default function profile(){
         idRaca:0,
         raca:'',
         idClasse:0,
-        classe:''
+        classe:'',
+        alinhamento:''
     }
 
     ids.campanha=route.params.campanha

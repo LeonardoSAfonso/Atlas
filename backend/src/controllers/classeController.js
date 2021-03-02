@@ -4,11 +4,12 @@ module.exports = {
 
     async create(req, res){
 
-        const {nome, hpInicial, hpLevelUp, desc, proeficienciaArmaduras, proeficienciaArmas,
+        const {nome, ca, hpInicial, hpLevelUp, desc, proeficienciaArmaduras, proeficienciaArmas,
             proeficienciaTestes, habilidadePrincipal, caminhoNome, caminhoDesc} = req.body
 
         const [codClasse] = await connection('Classes').insert({
             nome,
+            ca,
             hpInicial, 
             hpLevelUp, 
             desc,

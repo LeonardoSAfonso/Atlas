@@ -1,5 +1,6 @@
-import React, {useState, useEffect, useRef} from 'react'
-import { View,Image, Text, TouchableOpacity, ScrollView, Alert} from 'react-native'
+import React, { useState, useRef} from 'react'
+import { View, Text, TouchableOpacity, ScrollView, Alert} from 'react-native'
+import {Picker} from '@react-native-picker/picker'
 import {useNavigation, useRoute} from '@react-navigation/native'
 import {Form} from '@unform/mobile'
 
@@ -14,6 +15,8 @@ import styles from './styles'
 
 export default function profile(){
     
+    const [selectedValue, setSelectedValue] = useState()
+    
     const navigation = useNavigation()  
     const route = useRoute()
 
@@ -22,6 +25,9 @@ export default function profile(){
     const ids = route.params.ids
 
     console.log('Final ',ids)
+
+    route.params.ids.alinhamento=selectedValue
+    console.log(route.params.ids.alinhamento)
 
 
 
@@ -35,7 +41,7 @@ export default function profile(){
         console.log(data)
 
         try{
-            const res = await api.post(`/herois/${ids.campanha}/${ids.idRaca}/${ids.idClasse}/${ids.raca}/${ids.classe}`, data)
+            const res = await api.post(`/herois/${ids.campanha}/${ids.idRaca}/${ids.idClasse}/${ids.raca}/${ids.classe}/${ids.alinhamento}`, data)
             navigation.navigate('Herois', {campanha:ids.campanha})
             console.log(res.data)
 
@@ -59,15 +65,29 @@ export default function profile(){
 
                     <View style={styles.campo}> 
                         <Text style={styles.actionText}>Alinhamento</Text>
-                        <Input style={[styles.input, {width:'70%'}]} name="alinhamento" placeholder="Digite seu alinhamento"/>
+                        {/*<Input style={[styles.input, {width:'70%'}]} name="alinhamento" placeholder="Digite seu alinhamento"/>*/}
+                        < View style={styles.picker}>
+                            <Picker
+                                selectedValue={selectedValue}
+                                onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                            >
+                                <Picker.Item label="Leal e Bom" value="Leal e Bom" />
+                                <Picker.Item label="Neutro e Bom" value="Neutro e Bom" />
+                                <Picker.Item label="Caótico e Bom" value="Caótico e Bom" />
+                                <Picker.Item label="Leal e Neutro" value="Leal e Neutro" />
+                                <Picker.Item label="Neutro" value="Neutro" />
+                                <Picker.Item label="Caótico e Neutro" value="Caótico e Neutro" />
+                                <Picker.Item label="Leal e Mal" value="Leal e Mal" />
+                                <Picker.Item label="Neutro e Mal" value="Neutro e Mal" />
+                                <Picker.Item label="Caótico e Mal" value="Caótico e Mal" />
+
+                            </Picker>
+                        </View>
                     </View>
 
-                    
+                   
 
                     <View style={[styles.campo,{justifyContent:'space-evenly'}]}> 
-                        <Text style={styles.actionText}>HP Máxima</Text>
-                        <Input name="hpMaxima" placeholder="..."/>
-
                         <Text style={styles.actionText}>HP</Text>
                         <Input name="hp" placeholder="..."/>
 

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { Alert, View, FlatList, Image, Text, TouchableOpacity } from 'react-native'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import React, { useState } from 'react'
+import { Alert, View, FlatList, Text, TouchableOpacity } from 'react-native'
+import { useNavigation, useRoute, useFocusEffect  } from '@react-navigation/native'
 import { Feather, FontAwesome5 } from '@expo/vector-icons'
 
 import api from '../../services/api'
@@ -30,9 +30,11 @@ export default function listCampanha() {
 
     }
 
-    useEffect(() => {
-        loadCampanhas()
+    useFocusEffect(
+        React.useCallback(() => {
+            loadCampanhas()
     }, [])
+    )
 
 
 
@@ -60,12 +62,12 @@ export default function listCampanha() {
         }
     }
 
-    function Alertafernando(id) {
+    function AlertaExclusão(id) {
 
         return(
         Alert.alert('Excluir Aventura?', 'Deseja mesmo excluir a aventura?',
             [{
-                text: 'Cancel',
+                text: 'Cancelar',
                 onPress: () => console.log('Cancel Pressed'),
                 style: 'cancel'
             },
@@ -95,7 +97,7 @@ export default function listCampanha() {
                     
                     <TouchableOpacity style={styles.campanha} 
                     onPress={() => (navigateToDetalhes(campanha.codCampanha))} 
-                    onLongPress={() => (Alertafernando(campanha.codCampanha))} delayLongPress={500}
+                    onLongPress={() => (AlertaExclusão(campanha.codCampanha))} delayLongPress={500}
                 >
                     <FontAwesome5 name='dice-d20' size={50} color={'#47525E'}/>
                     <View>

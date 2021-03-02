@@ -5,6 +5,7 @@ exports.up = function(knex) {
         table.string('nome').notNullable()
         table.integer('hpInicial').notNullable()
         table.integer('hpLevelUp').notNullable()
+        table.integer('ca').notNullable()
         table.string('desc')
         table.string('proeficienciaArmaduras')
         table.string('proeficienciaArmas')
