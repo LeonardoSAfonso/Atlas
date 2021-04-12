@@ -13,6 +13,7 @@ exports.up = function(knex) {
         table.integer('car').notNullable()
         table.integer('forc').notNullable()
         table.integer('con').notNullable()
+        table.integer('ca').notNullable()
         table.integer('hpMaxima').notNullable()
         table.integer('hp').notNullable()
         table.string('classe').notNullable(),

@@ -26,10 +26,7 @@ module.exports = {
         const [codUser] = await connection('Users').insert({
             nome,
             email
-        })   
-
-
-        
+        })        
         /*const user = await connection('Users')
             .where({email:req.body.email})
             .first()

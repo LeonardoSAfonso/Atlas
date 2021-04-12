@@ -52,6 +52,8 @@ export default function heroi(){
     return(
         <View style={styles.container}> 
 
+            <Text style={styles.title}>HERÓIS</Text>
+
             <FlatList 
                 data={herois}
                 style={styles.heroiList}

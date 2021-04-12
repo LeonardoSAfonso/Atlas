@@ -7,6 +7,12 @@ export default StyleSheet.create({
         paddingHorizontal:24,
         backgroundColor: '#f0f0f5'
     },
+    title:{
+        alignSelf:'center',
+        color: '#47525E',
+        fontSize: 24,
+        fontWeight: 'bold',
+    },
     heroiList:{
         marginTop:15
     },

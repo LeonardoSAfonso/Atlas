@@ -1,11 +1,12 @@
 
 exports.up = function(knex) {
     return knex.schema.createTable('Classes', function(table){
+        
         table.increments('codClasse').notNullable()
         table.string('nome').notNullable()
         table.integer('hpInicial').notNullable()
         table.integer('hpLevelUp').notNullable()
-        table.integer('ca').notNullable()
+        table.integer('caInicial').notNullable()
         table.string('desc')
         table.string('proeficienciaArmaduras')
         table.string('proeficienciaArmas')

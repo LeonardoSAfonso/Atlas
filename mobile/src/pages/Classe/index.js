@@ -29,7 +29,7 @@ export default function profile(){
     ids.raca = route.params.raca
 
 
-    console.log('rOUTE: ',route.params)
+    console.log('ROUTE: ',route.params)
 
     const [classes, setClassses] = useState([])
 
@@ -54,10 +54,11 @@ export default function profile(){
         console.log('Cod: ', teste)
     }
 
-    function navigatoToAddHeroi(id, nome){
+    function navigatoToAddHeroi(id, nome, caInicial){
 
         ids.idClasse = id
         ids.classe = nome
+        ids.ca = caInicial
         navigation.navigate('AddHeroi', {ids})
     }
     
@@ -77,13 +78,14 @@ export default function profile(){
 
                     <View style={{justifyContent:'space-evenly', marginHorizontal: 30}}>
 
-                        <TouchableOpacity onPress={()=>navigatoToAddHeroi(classe.codClasse, classe.nome)}>
+                        <TouchableOpacity onPress={()=>navigatoToAddHeroi(classe.codClasse, classe.nome, classe.caInicial)}>
                             <Text style={styles.nome}>{classe.nome}</Text>
                         </TouchableOpacity>
 
                         <Text style={styles.caracteristicas}>{classe.desc}</Text>
                         <Text style={styles.caracteristicasTitle}>Armaduras::</Text>
                         <Text style={styles.caracteristicas}>{classe.proeficienciaArmaduras}</Text>
+                        <Text style={styles.caracteristicas}>Sua classe de armadura inicial é: {classe.caInicial}</Text>
                         <Text style={styles.caracteristicasTitle}>Armas:</Text>
                         <Text style={styles.caracteristicas}>{classe.proeficienciaArmas}</Text>
                         <Text style={styles.caracteristicasTitle}>Proeficiência:</Text>

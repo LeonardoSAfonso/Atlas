@@ -38,10 +38,18 @@ export default function profile(){
 
     async function handleSubmit(data){
 
+        data.campanha = ids.campanha
+        data.idRaca = ids.idRaca
+        data.idClasse = ids.idClasse
+        data.raca = ids.raca
+        data.classe= ids.classe
+        data.alinhamento = ids.alinhamento
+        data.ca = ids.ca
+
         console.log(data)
 
         try{
-            const res = await api.post(`/herois/${ids.campanha}/${ids.idRaca}/${ids.idClasse}/${ids.raca}/${ids.classe}/${ids.alinhamento}`, data)
+            const res = await api.post(`/herois`, data)
             navigation.navigate('Herois', {campanha:ids.campanha})
             console.log(res.data)
 
@@ -97,40 +105,39 @@ export default function profile(){
 
                     <View style={{flexDirection:'row', justifyContent:'flex-start'}}> 
 
-                    <View style={{width:'50%'}}> 
-                    <View style={styles.campo}>
-                        <Text style={styles.actionText}>Força</Text>
-                        <Input name="forc" placeholder="..."/>
-                    </View>
+                        <View style={{width:'50%'}}> 
+                            <View style={styles.campo}>
+                                <Text style={styles.actionText}>Força</Text>
+                                <Input name="forc" placeholder="..."/>
+                            </View>
 
-                    <View style={styles.campo}>
-                        <Text style={styles.actionText}>Constituição</Text>
-                        <Input name="con" placeholder="..."/>
-                    </View>
+                            <View style={styles.campo}>
+                                <Text style={styles.actionText}>Constituição</Text>
+                                <Input name="con" placeholder="..."/>
+                            </View>
 
-                    <View style={styles.campo}>
-                        <Text style={styles.actionText}>Inteligência</Text>
-                        <Input name="int" placeholder="..."/>
-                    </View>
+                            <View style={styles.campo}>
+                                <Text style={styles.actionText}>Inteligência</Text>
+                                <Input name="int" placeholder="..."/>
+                            </View>
+                        </View>
 
-                    </View>
-                    <View style={{width:'50%'}}>
-                    <View style={styles.campo}>               
-                        <Text style={styles.actionText}>Destreza</Text>
-                        <Input name="des" placeholder="..."/>
-                    </View>
+                        <View style={{width:'50%'}}>
+                            <View style={styles.campo}>               
+                                <Text style={styles.actionText}>Destreza</Text>
+                                <Input name="des" placeholder="..."/>
+                            </View>
 
-                    <View style={styles.campo}> 
-                        <Text style={styles.actionText}>Carisma</Text>
-                        <Input name="car" placeholder="..."/>
-                    </View>
+                            <View style={styles.campo}> 
+                                <Text style={styles.actionText}>Carisma</Text>
+                                <Input name="car" placeholder="..."/>
+                            </View>
 
-                    <View style={styles.campo}>
-                        <Text style={styles.actionText}>Sabedoria</Text>
-                        <Input name="sab" placeholder="..."/>
-                    </View>
-                    </View>
-
+                            <View style={styles.campo}>
+                                <Text style={styles.actionText}>Sabedoria</Text>
+                                <Input name="sab" placeholder="..."/>
+                            </View>
+                        </View>
                     </View>
                 </ScrollView>
             </Form>

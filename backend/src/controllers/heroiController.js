@@ -6,17 +6,10 @@ module.exports = {
 
         console.log(req.params)
 
-        const campanha = req.params.campanha
-        const classe = req.params.classe
-        const idClasse = req.params.idClasse
-        const raca = req.params.classe
-        const idRaca = req.params.idRaca
-        const alinhamento = req.params.alinhamento
-
-        const { nome, nivel, int, des, sab, car, forc, con, hp } = req.body
+        const { nome, nivel, int, des, sab, car, forc, con, ca, hp,campanha, classe, idClasse, raca, idRaca, alinhamento} = req.body
         const hpMaxima = hp
 
-        const [codHeroi] = await connection('Herois').insert({
+        const heroi = await connection('Herois').insert({
             nome,
             nivel,
             alinhamento,
@@ -26,6 +19,7 @@ module.exports = {
             car,
             forc,
             con,
+            ca,
             hpMaxima,
             hp,
             classe,
@@ -35,16 +29,15 @@ module.exports = {
             campanha
         })
 
-        return res.json(codHeroi)
+        console.log(heroi)
+        return res.json(heroi.codHeroi)
     },
 
     async index(req, res) {
 
         const campanha = req.params.campanha
 
-        const herois = await connection('Herois').join('Classes', 'Classes.codClasse', '=', 'idClasse')
-            .select('Classes.ca', 'Herois.*')
-            .where({ campanha: campanha })
+        const herois = await connection('Herois').select('*').where({ campanha: campanha })
 
         return res.json(herois)
     },
