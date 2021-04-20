@@ -50,6 +50,8 @@ routes.delete('/habilidades/:id', habilidadesController.delete)
 
 routes.get('/herois/:campanha', heroiController.index)
 routes.post('/herois', heroiController.create)
+routes.put('/herois/upHp', heroiController.updateHP)
+routes.put('/herois/upXp', heroiController.updateNivel)
 routes.delete('/herois/:id', heroiController.delete)
 
 

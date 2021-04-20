@@ -42,6 +42,33 @@ module.exports = {
         return res.json(herois)
     },
 
+    async updateHP(req, res){
+        const {alteracao, id} = req.body
+
+        const heroi = await connection.raw(`update Herois set hp = hp+${alteracao} where codHeroi = ${id}`)
+
+        return res.json(heroi)
+    },
+
+    async updateNivel(req, res){
+        const {atributoUm, atributoDois, id} = req.body
+
+        const {hpLevelUp} = await connection('Herois').join('Classes', 'Classes.codClasse', '=', 'idClasse' )
+        .select('Classes.hpLevelUp').where({codHeroi: id}).first()
+
+        console.log(hpLevelUp)
+
+        const heroi = await connection.raw(
+            `update Herois set ${atributoUm}=${atributoUm}+1, 
+            ${atributoDois}=${atributoDois}+1,
+            hpMaxima = hpMaxima+${hpLevelUp},
+            hp = hp+${hpLevelUp}
+            where codHeroi = ${id}`
+            )
+
+        return res.json(heroi)
+    },
+
     async delete(req, res) {
 
         const codHeroi = req.params.id
