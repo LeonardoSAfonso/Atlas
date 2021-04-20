@@ -14,8 +14,7 @@ export default StyleSheet.create({
         
     },
     detalhes:{
-        padding:20
-        
+        padding:20        
     },
 
     tr:{
@@ -30,7 +29,8 @@ export default StyleSheet.create({
         color: '#47525E',
         fontSize: 24,
         fontWeight: 'bold',
-        alignSelf:'center'
+        alignSelf:'center',
+        marginVertical: 10
     },
     heroiList:{
         marginTop:15
@@ -59,7 +59,7 @@ export default StyleSheet.create({
     caracteristicasTitle:{
         fontSize: 18,
         color:'#737380',
-        fontWeight:'bold'
+        fontWeight:'bold',
     },
     
     caracteristicas:{
@@ -76,9 +76,9 @@ export default StyleSheet.create({
     },
 
     atributos:{
-        marginTop:10,
         fontSize: 18,
         color:'#737380',
+        marginVertical: 7
 
     },
     

@@ -61,7 +61,7 @@ export default function profile(){
             <View style={{flexDirection:'row', justifyContent:'center', marginTop:10}}>
 
                 <Text style={styles.caracteristicasTitle}>HP: </Text>
-                <Text style={styles.caracteristicas}>{heroi.hpMaxima}/{heroi.hp}</Text> 
+                <Text style={styles.caracteristicas}>{heroi.hp}/{heroi.hpMaxima}</Text> 
                 <Text style={[{marginLeft:20}, styles.caracteristicasTitle]}>CA: </Text>
                 <Text style={styles.caracteristicas}>{heroi.ca}</Text>
 
@@ -70,18 +70,17 @@ export default function profile(){
                 <View style={styles.tr}></View>
                 <View>
                     <View style={{alignSelf:'center', flexDirection:'row'}}>  
-                        <View style={{alignSelf:'center', flexDirection:'row'}}>   
+                        <View style={{alignSelf:'center', flexDirection:'row', marginTop: 10}}>   
                             <Text style={styles.caracteristicasTitle}>RAÇA: </Text>
                             <Text style={styles.caracteristicas}>{heroi.raca}</Text>
                         </View>
-                        <View style={{alignSelf:'center', flexDirection:'row'}}>    
+                        <View style={{alignSelf:'center', flexDirection:'row', marginTop: 10}}>    
                                 <Text style={[styles.caracteristicasTitle, {marginLeft:10}]}>CLASSE: </Text>
                                 <Text style={styles.caracteristicas}>{heroi.classe}</Text>
                         </View>
                     </View>
 
-
-                    <View style={{alignSelf:'center', flexDirection:'row'}}>    
+                    <View style={{alignSelf:'center', flexDirection:'row', marginVertical: 10}}>    
                         <Text style={styles.caracteristicasTitle}>ALINHAMENTO: </Text>
                         <Text style={styles.caracteristicas}>{heroi.alinhamento}</Text>
                     </View>
@@ -94,26 +93,26 @@ export default function profile(){
                 <Text style={styles.title}>Atributos</Text>
 
                 <View style={{flexDirection:'row'}}>
-                    <Text style={[styles.caracteristicasTitle, {marginTop:10}]}>FORÇA: </Text>
+                    <Text style={[styles.caracteristicasTitle, {marginVertical:7}]}>FORÇA: </Text>
                     <Text style={styles.atributos}>{heroi.forc}</Text>
 
-                    <Text style={[styles.caracteristicasTitle, {marginTop:10, marginLeft: 10}]}>CONSTITUIÇÃO: </Text>
+                    <Text style={[styles.caracteristicasTitle, {marginLeft: 10, marginVertical: 7}]}>CONSTITUIÇÃO: </Text>
                     <Text style={styles.atributos}>{heroi.con}</Text>
                 </View>
 
                 <View style={{flexDirection:'row'}}>
-                    <Text style={[styles.caracteristicasTitle, {marginTop:10}]}>DESTREZA: </Text>
+                    <Text style={[styles.caracteristicasTitle, {marginVertical:7}]}>DESTREZA: </Text>
                     <Text style={styles.atributos}>{heroi.des}</Text>
 
-                    <Text style={[styles.caracteristicasTitle, {marginTop:10, marginLeft: 10}]}>CARISMA: </Text>
+                    <Text style={[styles.caracteristicasTitle, {marginLeft: 10, marginVertical: 7}]}>CARISMA: </Text>
                     <Text style={styles.atributos}>{heroi.car}</Text>
                 </View>
 
                 <View style={{flexDirection:'row'}}>
-                    <Text style={[styles.caracteristicasTitle, {marginTop:10}]}>SABEDORIA: </Text>
+                    <Text style={[styles.caracteristicasTitle, {marginVertical:7}]}>SABEDORIA: </Text>
                     <Text style={styles.atributos}>{heroi.sab}</Text>
 
-                    <Text style={[styles.caracteristicasTitle, {marginTop:10, marginLeft: 10}]}>INTELIGÊNCIA: </Text>
+                    <Text style={[styles.caracteristicasTitle, {marginLeft: 10, marginVertical: 7}]}>INTELIGÊNCIA: </Text>
                     <Text style={styles.atributos}>{heroi.int}</Text>
                 </View>
 

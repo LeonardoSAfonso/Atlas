@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native'
 import Constants from 'expo-constants'
 
 export default StyleSheet.create({
+    
     container: {
         flex:1.,
         backgroundColor: '#f0f0f5',
@@ -56,30 +57,27 @@ export default StyleSheet.create({
     },
     form:{
         marginTop:20
-
     },
 
     campo:{
         flexDirection: 'row',
         alignItems:'center',
-        justifyContent:'space-evenly'
+        justifyContent:'space-evenly',
     },
 
     input: {
         alignSelf:'flex-end',
         marginBottom: 15,
         paddingHorizontal: 12,
-        paddingVertical: 16,
         borderRadius: 4,
         borderWidth: 2,
         borderColor: '#ddd',
         fontSize: 15,
         color: '#444',
-        width:45,
-        height:50
+        width:40,
+        height:40
     },
     picker:{
-        
         marginBottom:15,
         borderRadius: 4,
         borderWidth: 2,
@@ -87,24 +85,22 @@ export default StyleSheet.create({
         fontSize: 15,
         color: '#444',
         width:150,
-        height:50
+        height:40,
+        justifyContent:'center'
 
-    },
-    actions:{
-        marginTop:0,
-        justifyContent: 'center',
-        alignContent: 'center'
     },
 
     action:{
         marginTop:25,
-        marginBottom:25,
+        marginBottom:50,
         backgroundColor: '#47525E',
         borderRadius:8,
         height:50,
-        width:'100%',
+        width:'80%',
         justifyContent:'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        alignSelf: 'center'
+
     },
 
     actionText:{

@@ -42,6 +42,7 @@ function Input({ name, ...rest }) {
       defaultValue={defaultValue}
       placeholderTextColor="#666360"
       style={styles.input}
+      keyboardType='number-pad'
       onChangeText={value => {
         if (inputRef.current) {
           inputRef.current.value = value;
