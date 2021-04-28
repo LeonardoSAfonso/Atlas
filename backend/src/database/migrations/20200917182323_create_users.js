@@ -4,7 +4,7 @@ exports.up = function(knex) {
     return knex.schema.createTable('Users', function(table){
         
         table.increments('codUser')
-        table.string('nome').notNullable()
+        table.string('senha').notNullable()
         table.string('email').notNullable().unique()
     })
   

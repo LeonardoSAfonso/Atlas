@@ -16,7 +16,6 @@ function Icone(){
                 style={{color: '#47525E',fontSize: 20,fontWeight: 'bold', marginLeft:15}}
             >Atlas Adventure</Text> 
         </View>
-        
     )   
 }
 
@@ -26,18 +25,15 @@ import Logon from './pages/Logon'
 import Campanha from './pages/Campanha'
 import AddCampanha from './pages/AddCampanha'
 
-
 import Mobs from './pages/Mobs'
 import AddMob from './pages/AddMob'
 import ProfileMob from './pages/ProfileMob'
-
 
 import Herois from './pages/Herois'
 import AddHeroi from './pages/AddHeroi'
 import Classe from './pages/Classe'
 import Raca from './pages/Raca'
 import ProfileHeroi from './pages/ProfileHeroi'
-
 
 export default function Routes(){
     return(
@@ -58,10 +54,7 @@ export default function Routes(){
                 <AppStack.Screen name='Raca' component={Raca}/>
                 <AppStack.Screen name='Classe' component={Classe}/>
                 <AppStack.Screen name='AddHeroi' component={AddHeroi}/>
-                
 
-
-                
             </AppStack.Navigator>
         </NavigationContainer>
     )
