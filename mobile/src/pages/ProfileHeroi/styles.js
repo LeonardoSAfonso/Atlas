@@ -1,5 +1,7 @@
-import {StyleSheet} from 'react-native'
+import {StyleSheet, Dimensions} from 'react-native'
 import Constants from 'expo-constants'
+
+const { width } = Dimensions.get("window")
 
 export default StyleSheet.create({
     container: {
@@ -31,6 +33,18 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         alignSelf:'center',
         marginVertical: 10
+    },
+    picker:{
+        marginBottom:15,
+        borderRadius: 4,
+        borderWidth: 2,
+        borderColor: '#ddd',
+        fontSize: 15,
+        color: '#444',
+        width:150,
+        height:40,
+        justifyContent:'center'
+
     },
     heroiList:{
         marginTop:15
@@ -81,17 +95,94 @@ export default StyleSheet.create({
         marginVertical: 7
 
     },
-    
-    addHeroi:{                
+    btnModalTexto:{
+        fontSize: 15,
+        color:'#f0f0f5',
+        fontWeight:'bold',
+        alignSelf: 'center'
+    },
+    btnModal:{                
         backgroundColor: '#47525E',
         alignItems:'center',
         justifyContent:'center',
-        width:60,
-        height:60,
-        borderRadius:50,
-        position:'absolute',
-        left:'90%',
-        top:'82%'
-    },
+        alignSelf: 'center',
+        width:'30%',
+        height:50,
+        borderRadius:20,
+    },  
+    actionText:{
+        color: '#47525E',
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlign:'center',
+        marginBottom:15
 
+    },  
+    btnHp:{                
+        marginTop: '10%',
+        marginBottom: '7%',
+        backgroundColor: '#47525E',
+        alignItems:'center',
+        justifyContent:'center',
+        width:'25%',
+        height:50,
+        borderRadius:20,
+    },
+    btnHpTexto:{
+        fontSize: 24,
+        color:'#f0f0f5',
+        fontWeight:'bold',
+    },
+    btnLevelUp:{      
+        backgroundColor: '#47525E',
+        alignItems:'center',
+        justifyContent:'center',
+        marginLeft:'20%',
+        width:'60%',
+        height:60,
+        borderRadius:20,
+    },
+    viewWrapper: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "rgba(0, 0, 0, 0.2)",
+    },
+    modalView: {
+        alignItems: "center",
+        justifyContent: "center",
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        elevation: 5,
+        transform: [{ translateX: -(width * 0.4) }, 
+                    { translateY: -90 }],
+        height: 180,
+        width: width * 0.8,
+        backgroundColor: "#fff",
+        borderRadius: 7,
+    },
+    modalView2: {
+        alignItems: "center",
+        justifyContent: "center",
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        elevation: 5,
+        transform: [{ translateX: -(width * 0.4) }, 
+                    { translateY: -90 }],
+        height: 250,
+        width: width * 0.8,
+        backgroundColor: "#fff",
+        borderRadius: 7,
+    },
+    textInput: {
+        width: "80%",
+        borderRadius: 5,
+        paddingVertical: 8,
+        paddingHorizontal: 16,
+        borderColor: "rgba(0, 0, 0, 0.2)",
+        borderWidth: 1,
+        marginBottom: 8,
+    }
 })

@@ -78,6 +78,8 @@ export default function mob(){
     return(
         <View style={styles.container}> 
 
+            <Text style={styles.title}>MOBS</Text> 
+
             <FlatList 
                 data={mobs}
                 style={styles.mobList}

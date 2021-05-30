@@ -6,7 +6,7 @@ module.exports = {
 
         console.log(req.params)
 
-        const { nome, nivel, int, des, sab, car, forc, con, ca, hp,campanha, classe, idClasse, raca, idRaca, alinhamento} = req.body
+        const { nome, nivel, int, des, sab, car, forc, con, ca, hp, campanha, classe, idClasse, raca, idRaca, alinhamento } = req.body
         const hpMaxima = hp
 
         const heroi = await connection('Herois').insert({
@@ -42,29 +42,34 @@ module.exports = {
         return res.json(herois)
     },
 
-    async updateHP(req, res){
-        const {alteracao, id} = req.body
+    async updateHP(req, res) {
+        const { alteracao, id } = req.body
 
-        const heroi = await connection.raw(`update Herois set hp = hp+${alteracao} where codHeroi = ${id}`)
+        await connection.raw(`update Herois set hp = hp+${alteracao} where codHeroi = ${id}`)
+
+        const heroi = await connection('Herois').select('*').where({ codHeroi: id }).first()
 
         return res.json(heroi)
     },
 
-    async updateNivel(req, res){
-        const {atributoUm, atributoDois, id} = req.body
+    async updateNivel(req, res) {
+        console.log(req.body)
+        const { atributoUm, atributoDois, id } = req.body
 
-        const {hpLevelUp} = await connection('Herois').join('Classes', 'Classes.codClasse', '=', 'idClasse' )
-        .select('Classes.hpLevelUp').where({codHeroi: id}).first()
+        const { hpLevelUp } = await connection('Herois').join('Classes', 'Classes.codClasse', '=', 'idClasse')
+            .select('Classes.hpLevelUp').where({ codHeroi: id }).first()
 
         console.log(hpLevelUp)
 
-        const heroi = await connection.raw(
-            `update Herois set ${atributoUm}=${atributoUm}+1, 
-            ${atributoDois}=${atributoDois}+1,
+        await connection.raw(
+            `update Herois set ${atributoUm==atributoDois?`${atributoUm}=${atributoUm}+2,`:`${atributoUm}=${atributoUm}+1, 
+            ${atributoDois}=${atributoDois}+1,`}
             hpMaxima = hpMaxima+${hpLevelUp},
+            nivel = nivel + 1,
             hp = hp+${hpLevelUp}
             where codHeroi = ${id}`
-            )
+        )
+        const heroi = await connection('Herois').select('*').where({ codHeroi: id }).first()
 
         return res.json(heroi)
     },
