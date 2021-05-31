@@ -43,9 +43,9 @@ export default function login(){
 
             <Form ref={formRef} onSubmit={handleSubmit} style={styles.form}>
     
-                <Input name="email" placeholder="Insira seu email"/>
-                <Input name="password" placeholder="Digite sua senha"/>
-
+                <Input name="email" placeholder="Insira seu email" />
+                <Input name="password" placeholder="Digite sua senha" secureTextEntry={true}/>
+ 
             </Form>
 
             <View style={styles.actions}>
